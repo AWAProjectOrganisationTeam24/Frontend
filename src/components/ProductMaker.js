@@ -39,7 +39,7 @@ class ProductMaker extends React.Component{
            message: <div>
            <button onClick={() => this.Back()}>X</button>
            <div>Product name<input type="text" id="Input1"/></div>
-       <div>Address<input type="text"             id="Input2"/></div>
+       <div>Restaurant<input type="text"             id="Input2"/></div>
        <div>Operation hours<input type="text"     id="Input3"/></div>
        <button onClick={() => this.Submit()}>Submit</button>
        </div>

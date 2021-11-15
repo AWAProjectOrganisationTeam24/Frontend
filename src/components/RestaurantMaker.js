@@ -61,7 +61,7 @@ class RestaurantMaker extends React.Component{
            <button onClick={() => this.Back()}>X</button>
            <div>Restaurant name<input type="text" id="Input1"/></div>
        <div>Address<input type="text"             id="Input2"/></div>
-       <div>Operation hours<input type="text"     id="Input3"/></div>
+       <div>Operating hours<input type="text"     id="Input3"/></div>
        <div>Restaurant type</div>
        <div><input type="radio" name="Typechoice" value="Buffet"        id="Choice1"></input>Buffet</div>
        <div><input type="radio" name="Typechoice" value="Fast food"     id="Choice2"></input>Fast food</div>
