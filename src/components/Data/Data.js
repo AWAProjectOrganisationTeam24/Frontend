@@ -4,25 +4,25 @@ export const data = [
     {
         foodName:"Pizza ",
         foodprize:2000,
-        fooddetails:"Well faravored pizza",
+        fooddetails:"Well Flavored pizza",
         
     },
     {
         foodName:"Pizza ",
         foodprize:2000,
-        fooddetails:"Well faravored pizza",
+        fooddetails:"Well Flavored pizza",
         
     },
     {
         foodName:"Pizza ",
         foodprize:2000,
-        fooddetails:"Well faravored pizza",
+        fooddetails:"Well Flavored pizza",
         
     },
     {
         foodName:"Pizza ",
         foodprize:2000,
-        fooddetails:"Well faravored pizza",
+        fooddetails:"Well Flavored pizza",
         
     }
     
