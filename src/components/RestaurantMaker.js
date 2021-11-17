@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './RestaurantMaker.module.css'
+import axios from "axios";
 
 class RestaurantMaker extends React.Component{
 
@@ -7,74 +8,94 @@ class RestaurantMaker extends React.Component{
         super(props)
 
         this.state={
-            message: ''
+            message:'',
+            id_owner: '',
+            name:'',
+            address:'',
+            city:'',
+            image:'',
+            type:'',
+            openHr:''
         }
     }
 
     Submit(){
         console.log("check")
-        var value1 = document.getElementById("Input1").value
-        var value2 = document.getElementById("Input2").value
- 
-        var value3 = document.getElementById("Input3").value
+        const name = document.getElementById("name").value
+        const address = document.getElementById("address").value
+        const city = document.getElementById("city").value
+        const openHr = document.getElementById("openHr").value
+
         const rbs= document.querySelectorAll('input[name="Typechoice"]')
-        let selectedValue;
+        let category;
         for (const rb of rbs){
             if (rb.checked) {
                 console.log("check2")
-                selectedValue=rb.value;
+                category=rb.value;
                 break
             }
         }
+
         const mbs= document.querySelectorAll('input[name="Moneychoice"]')
-        let selectedValue1;
+        let moneyChoice;
         for (const mb of mbs){
             if (mb.checked) {
-                selectedValue1=mb.value;
+                moneyChoice=mb.value;
                 console.log("check3")
                 break
             }
         }
-        console.log(value1)
-        console.log(value2)
-        console.log(value3)
-        console.log(selectedValue)
-        console.log(selectedValue1)
-    
-        
-       
 
         this.setState({
-            message: ''
+                id_owner: "id_customer owning the restaurant",
+                category: category,
+                name: name,
+                address: address,
+                priceLevel: moneyChoice,
+                image: 'image',
+                city: city,
+                openHr: openHr
+            })
+
+//sending to database
+        axios.post("http://localhost:5000/", {
+            id_owner: this.state.id_owner,
+            category: this.state.category,
+            name: this.state.name,
+            address: this.state.address,
+            priceLevel: this.state.priceLevel,
+            image: this.state.image,
+            city: this.state.city,
+            openHr: this.state.openHr
         })
-        //return value1+", "+value2+", "+value3+", "+selectedValue+", "+selectedValue1;
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
-    Back(){
-      this.setState({
-            message: ''
-    })
-}
     clickHandler() {
         this.setState({
-           message: <div className={styles.RestaurantScreen}>
-           <button onClick={() => this.Back()}>X</button>
-           <div>Restaurant name<input type="text" id="Input1"/></div>
-       <div>Address<input type="text"             id="Input2"/></div>
-       <div>Operating hours<input type="text"     id="Input3"/></div>
-       <div>Restaurant type</div>
-       <div><input type="radio" name="Typechoice" value="Buffet"        id="Choice1"></input>Buffet</div>
-       <div><input type="radio" name="Typechoice" value="Fast food"     id="Choice2"></input>Fast food</div>
-       <div><input type="radio" name="Typechoice" value="Fast casual"   id="Choice3"></input>Fast casual</div>
-       <div><input type="radio" name="Typechoice" value="Casual dining" id="Choice4"></input>Casual dining</div>
-       <div><input type="radio" name="Typechoice" value="Fine dining"   id="Choice5"></input>Fine dining</div>
-       <div>Price level</div>
-       <div><input type="radio" name="Moneychoice" value="€"    id="Mony1"></input>€</div>
-       <div><input type="radio" name="Moneychoice" value="€€"   id="Mony2"></input>€€</div>
-       <div><input type="radio" name="Moneychoice" value="€€€"  id="Mony3"></input>€€€</div>
-       <div><input type="radio" name="Moneychoice" value="€€€€" id="Mony4"></input>€€€€</div>
-       <button onClick={() => this.Submit()}>Submit</button>
-       </div>
+           message: <div className={ styles.RestaurantScreen }>
+                       <div>Restaurant name<input type="text" id="name"/></div>
+                       <div>Address<input type="text" id="address"/></div>
+                       <div>City<input type="text" id="city"/></div>
+                       <div>Operating hours<input type="text" id="openHr"/></div>
+                       <div>Restaurant type</div>
+                       <div><input type="radio" name="Typechoice" value="Buffet"        id="Choice1"/>Buffet</div>
+                       <div><input type="radio" name="Typechoice" value="Fast food"     id="Choice2"/>Fast food</div>
+                       <div><input type="radio" name="Typechoice" value="Fast casual"   id="Choice3"/>Fast casual</div>
+                       <div><input type="radio" name="Typechoice" value="Casual dining" id="Choice4"/>Casual dining</div>
+                       <div><input type="radio" name="Typechoice" value="Fine dining"   id="Choice5"/>Fine dining</div>
+                       <div>Price level</div>
+                       <div><input type="radio" name="Moneychoice" value="€"    id="Mony1"/>€</div>
+                       <div><input type="radio" name="Moneychoice" value="€€"   id="Mony2"/>€€</div>
+                       <div><input type="radio" name="Moneychoice" value="€€€"  id="Mony3"/>€€€</div>
+                       <div><input type="radio" name="Moneychoice" value="€€€€" id="Mony4"/>€€€€</div>
+                       <button onClick={() => this.Submit()}>Submit</button>
+                    </div>
         })
         console.log(this)
     }
