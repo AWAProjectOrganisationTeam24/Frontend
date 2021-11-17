@@ -1,39 +1,33 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter, Route, Routes, Link} from "react-router-dom";
-import Header from './components/Header';
-import Login from './components/Login';
-import CreateUser from './components/CreateUser';
-import RestaurantMaker from './components/RestaurantMaker';
-import ProductMaker from './components/ProductMaker';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
+
+
+import Login from "./components/Login";
+import CreateUser from "./components/CreateUser";
+import RestaurantMaker from "./components/RestaurantMaker";
+import ProductMaker from "./components/ProductMaker";
+import Home from "./components/Home";
 
 class App extends React.Component {
+  render() {
+    return (
+      <Router>
 
-  render(){
 
-  return (
-    <BrowserRouter>
-      <div>
-        <div className= 'header'>
-        <Link to= '/'><div>Foodcrosoft</div></Link>
-      </div>
-      <Routes>
-          <Route>
-            <Route path="/" element={ <Header/> } />
-            <Route path="/login" element={ <Login/> }/>
-            <Route path="/login/createUser" element={ <CreateUser/> }/>
-          </Route>
-          <Route>
-            <Route path='/restaurantMaker' element={ <RestaurantMaker/> }/>
-            <Route path='/productMaker' element={ <ProductMaker/> }/>
-          </Route>
+        <Routes>
+          <Route exact path="/" element={<Home/>}/>
+          <Route exact path="/login" element={<Login/>} />
+          <Route path="/login/createUser" element={<CreateUser/> } />
+
+          <Route path="/restaurantMaker" element={RestaurantMaker } />
+          <Route path="/productMaker" element={ProductMaker } />
         </Routes>
-      </div>
-    </BrowserRouter>
-      
-  );
-}}
 
+       </Router>
+    );
+  }
+}
 
 export default App;

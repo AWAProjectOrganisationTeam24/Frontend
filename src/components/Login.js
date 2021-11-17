@@ -42,6 +42,8 @@ class Login extends Component {
         return (
             <div className ={ styles.container }>
                 <form onSubmit={this.submitHandler}>
+
+                    
                     <table>
                         <tr>
                             <td>Mail</td>
@@ -63,6 +65,11 @@ class Login extends Component {
                     <button type="submit">Login</button>
                     <Link to = 'createUser'><button>Sign up</button></Link>
                 </form>
+
+               
+
+
+
             </div>
         )
     }}

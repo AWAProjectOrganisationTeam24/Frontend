@@ -52,7 +52,13 @@ class CreateUser extends Component {
     render() {
         const { firstname, lastname, mail, psw, address, city } = this.state
         return (
+            <div>
+                                            
+
             <div className ={ styles.container }>
+
+                <h1 className={styles.h1}>Create User</h1>
+
                 <form onSubmit={this.submitHandler}>
                     <table>
                         <tr>
@@ -100,6 +106,7 @@ class CreateUser extends Component {
                     </table>
                     <button type="submit">Create user</button>
                 </form>
+            </div>
             </div>
         )
     }}
