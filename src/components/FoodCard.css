@@ -1,4 +1,4 @@
-
+/* 
 .cards div{
     position: relative;
   width: 400px;
@@ -54,4 +54,19 @@ span .checked {
 font-size: 19px;
 color: orange;
 /* border: solid green; */
+
+/* card */
+
+.card{
+    transition: 0.4s ease-out
+}
+
+.card:hover{
+transform: translateY(10px);
+
+}
+.card:before{
+
+    opacity: 1;
+    transform: translateY(0px);
 }

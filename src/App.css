@@ -13,14 +13,11 @@
 
 
 
-* {
-  box-sizing: border-box;
-}
-
-/* Create three equal columns that floats next to each other */
 
 
-.row{
+
+
+.rowbox{
   margin-top: 2px;
   margin: 4px;
 
@@ -34,17 +31,15 @@
   float: left;
   width: 30.33%;
   padding: 8px;
-  height: 400px; /* Should be removed. Only for demonstration */
+  height: 500px; 
 }
 
-/* Clear floats after the columns */
-.row:after {
+.rowbox:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {
   .column {
     width: 100%;
