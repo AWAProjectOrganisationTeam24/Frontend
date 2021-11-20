@@ -6,7 +6,7 @@ const Search = ({ searchParam, onChange }) => {
 
     return (
         <div className="topnav">
-             <input type="text" ref={ref}  value={searchParam}  onChange={onChange} placeholder="Cant find your favorite Meal Search.."/>
+             <input type="text" ref={ref}  value={searchParam}  onChange={onChange} placeholder="Search restaurant by city.."/>
 
             </div>
     )

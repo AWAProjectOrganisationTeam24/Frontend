@@ -1,29 +1,26 @@
-import React from 'react'
-import "./FoodCard.css"
-function ProductCard(props) {
-    const { product, onAdd } = props;
-    console.log("myproducts")
-    console.log(product)
+import React from "react";
+import "./FoodCard.css";
+import resimg from "./res.jpeg";
 
-    return (
-        <div>
-        <div class="cards">
-            <div>
-            <img src="./pizza-img.png" alt="product_img"/>
-            <p class="product-name">{product.foodName}</p>
-            <h3 class="price">$ {product.foodprize} euro</h3>
-            <p>{product.fooddetails}</p>
-            
-
-            <button onClick={() => onAdd(product)}>Add to cart</button>
-            
-
-            </div>
-
+function ProductCard({ restaurantsName, location, address, status }) {
+  return (
+    <div>
+      <div class="card mt-4">
+        <img class="card-img-top" src={resimg} alt="cap1" />
+        <div class="card-body">
+          <h5 class="card-title">{restaurantsName}</h5>
+          <i className="fas fa-solid fa-map-marker-alt"></i>
+          <small> {location}</small>
+          <address class="card-text">{address}</address>
+          <small className="">
+          
+            <span class="badge badge-success">{status}</span>
+          </small>
+          <button className="btn btn-outline-success">View Restaurant</button>
         </div>
-        </div>
-     
-    )
+      </div>
+    </div>
+  );
 }
 
-export default ProductCard
+export default ProductCard;
