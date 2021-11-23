@@ -149,4 +149,3 @@ class ProductMaker extends Component {
             </div>
         )
     }}
-export default ProductMaker;
