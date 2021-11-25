@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Header.css"
+import "./partials/Header.css"
 const Search = ({ searchParam, onChange }) => {
     const ref = React.createRef(null);
 

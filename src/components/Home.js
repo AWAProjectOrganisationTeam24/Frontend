@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "./Header";
+import Header from "./partials/Header";
 import "../App.css";
-import ProductCard from "./FoodCard";
+import ProductCard from "./partials/RestaurantCard";
 import Search from "./Search";
 import { data } from "./Data/Data";
 import FoodNotFound from "./FoodNotFound";

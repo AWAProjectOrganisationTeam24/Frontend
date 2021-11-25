@@ -1,5 +1,6 @@
 import React from 'react'
-import "./FoodCard.css"
+import "./partials/RestaurantCard.css"
+
 function ProductCard(props) {
     const { product, onAdd } = props;
     console.log("myproducts")
