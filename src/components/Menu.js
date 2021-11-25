@@ -1,13 +1,14 @@
 import React from 'react'
-import Header from './Header'
+import Header from './partials/Header'
 import "../App.css"
 import ProductCard from './MenuFood'
 import Search from './Search'
 import {data} from "./Data/MenuData"
 import FoodNotFound from './FoodNotFound'
-import Footer from './Footer'
+import Footer from './partials/Footer'
 import Basket from './Shoppingcart';
 import { useState } from 'react';
+
 
 function Home() {
 
