@@ -29,6 +29,7 @@ function Home() {
       <Search
         searchParam={search}
         onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search restaurant by city.."
       />
 
       {/*  */}

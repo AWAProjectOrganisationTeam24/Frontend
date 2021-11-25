@@ -48,7 +48,7 @@ import axios from "axios";
 import styles from './Login.module.css';
 
 
-class ProductMaker extends Component {
+export default class ProductMaker extends Component {
     constructor(props) {
         super(props);
 

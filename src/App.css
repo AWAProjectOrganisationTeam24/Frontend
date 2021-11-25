@@ -32,6 +32,14 @@
   clear: both;
 }
 
+
+.cart {
+  flex-direction: row;
+}
+.cart img {
+  width: 30%;
+}
+
 @media screen and (max-width: 800px) {
   .column {
     width: 100%;

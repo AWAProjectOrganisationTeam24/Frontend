@@ -2,6 +2,8 @@ import React from "react";
 import "./FoodCard.css";
 import resimg from "./res.jpeg";
 
+import {Link} from 'react-router-dom';
+
 function ProductCard({ restaurantsName, location, address, status }) {
   return (
     <div>
@@ -16,7 +18,7 @@ function ProductCard({ restaurantsName, location, address, status }) {
           
             <span class="badge badge-success">{status}</span>
           </small>
-          <button className="btn btn-outline-success">View Restaurant</button>
+          <button className="btn btn-outline-success"><Link to='/restaurant/menu/id/'>View Restaurant</Link></button>
         </div>
       </div>
     </div>
