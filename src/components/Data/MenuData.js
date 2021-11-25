@@ -20,7 +20,7 @@ export const data = {
     {
         id: '3',
         foodName:"Pizza Chinzilla ",
-        foodprize:150,
+        foodprize:15,
         fooddetails:"Well Flavored pizza",
         
     },
