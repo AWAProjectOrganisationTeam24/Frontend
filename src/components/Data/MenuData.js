@@ -13,7 +13,7 @@ export const data = {
     {
         id: '2',
         foodName:"Pizza Godzilla",
-        foodprize:230,
+        foodprize:12,
        
         
     },
