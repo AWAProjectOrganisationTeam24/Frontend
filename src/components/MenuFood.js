@@ -1,6 +1,11 @@
-import React from "react";
-import "./FoodCard.css";
+
+
+
+import React from 'react'
+import "./partials/RestaurantCard.css"
 import resimg from "./res.jpeg";
+
+
 function ProductCard(props) {
   const { product, onAdd } = props;
   console.log("myproducts");

@@ -1,13 +1,16 @@
-import React from "react";
-import Header from "./Header";
-import "../App.css";
-import ProductCard from "./MenuFood";
-import Search from "./Search";
-import { data } from "./Data/MenuData";
-import FoodNotFound from "./FoodNotFound";
-import Footer from "./Footer";
-import Basket from "./Shoppingcart";
-import { useState } from "react";
+
+import React from 'react'
+import Header from './partials/Header'
+import "../App.css"
+import ProductCard from './MenuFood'
+import Search from './Search'
+import {data} from "./Data/MenuData"
+import FoodNotFound from './FoodNotFound'
+import Footer from './partials/Footer'
+import Basket from './Shoppingcart';
+import { useState } from 'react';
+
+
 
 function Home() {
   // console.log(data)

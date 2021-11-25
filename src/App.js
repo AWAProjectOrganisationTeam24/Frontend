@@ -7,9 +7,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Menu from "./components/Menu"
 import Login from "./components/Login";
 import CreateUser from "./components/CreateUser";
-import RestaurantMaker from "./components/RestaurantMaker";
-import ProductMaker from "./components/ProductMaker";
+import RestaurantMaker from "./pageMakers/RestaurantMaker";
+import ProductMaker from "./pageMakers/ProductMaker";
 import Home from "./components/Home";
+
+
+import ShoppingCart from "./components/Shoppingcart";
 
 
 class App extends React.Component {
@@ -21,10 +24,14 @@ class App extends React.Component {
         <Routes>
           <Route exact path="/" element={<Home/>}/>
           <Route exact path="/login" element={<Login/>} />
-          <Route exact path="/login/createUser" element={<CreateUser/> } />
-          <Route exact path="/restaurant/menu/id/" element={<Menu/>}/>
-          <Route exact path="/restaurantMaker" element={<RestaurantMaker/>} />
-          <Route exact path="/productMaker" element={<ProductMaker/> } />
+
+          <Route path="/login/createUser" element={<CreateUser/> } />
+        
+          <Route path="/restaurant/menu/:id/" element={<Menu/>}/>
+          <Route path="/restaurantMaker" element={RestaurantMaker } />
+          <Route path="/productMaker" element={ProductMaker } />
+          <Route path="/cart" element={<ShoppingCart/>} />
+
         </Routes>
 
        </Router>

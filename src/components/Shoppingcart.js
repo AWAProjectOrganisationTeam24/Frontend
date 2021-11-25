@@ -1,14 +1,16 @@
-import React from "react";
 
+import React from 'react';
 import resimg from "./res.jpeg";
-// import Styles from './Shoppingcart.css'
+
+
 export default function Basket(props) {
   const { cartItems, onAdd, onRemove } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.foodprize, 0);
-  console.log("shoppingprops");
-  console.log(props);
-  console.log("AAAAAAAAA");
-  console.log(itemsPrice);
+    console.log("shoppingprops");
+    console.log(props);
+    console.log("AAAAAAAAA");
+    console.log(itemsPrice);
+
   return (
     <div>
       <div className="container">
