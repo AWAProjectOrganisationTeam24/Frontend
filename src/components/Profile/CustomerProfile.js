@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 
 
 
-function Topic() {
+/*function Topic() {
     // The <Route> that rendered this component has a
     // path of `/topics/:topicId`. The `:topicId` portion
     // of the URL indicates a placeholder that we can
@@ -18,7 +18,7 @@ function Topic() {
         <h3>{id_restaurant}</h3>
       </div>
     );
-  }
+  }*/
 
 function App() {
     //to this const customer id you want to search
