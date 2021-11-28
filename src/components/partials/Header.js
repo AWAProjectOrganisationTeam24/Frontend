@@ -13,6 +13,9 @@ function Header() {
                 <a class="active" href="#home"> <img className="img" src={logo} alt="Logo"/></a>
                 <div className="header_right">
                     <Link to="/login">Login</Link>
+
+                    <Link to="/Profile/:id">Profile</Link>
+
                     <Link to="/login/createUser">Register</Link>
                 </div>
             </div>

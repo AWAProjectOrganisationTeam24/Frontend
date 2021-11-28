@@ -16,6 +16,7 @@ function Header() {
             <a class="active" href="#home"> <img className="img" src={logo} alt="Logo"/></a>
 
             <div className="header_right">
+                               <Link to="/profile">Profile</Link>
 
                                <Link to="/login">Login</Link>
  
