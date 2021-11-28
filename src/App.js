@@ -26,12 +26,14 @@ class App extends React.Component {
         <Route path="/profile/restaurant/:id_restaurant" element={<RestaurantProfile/>}/>
           <Route exact path="/" element={<Home/>}/>
           <Route exact path="/login" element={<Login/>} />
+
           <Route path="/profile/:id" element={<CustomerProfile/> } />
           <Route path="/login/createUser" element={<CreateUser/> } />
         
           <Route path="/restaurant/menu/:id/" element={<Menu/>}/>
           <Route path="/restaurantMaker" element={<RestaurantMaker/> } />
           <Route path="/productMaker" element={<ProductMaker/> } />
+
           <Route path="/cart" element={<ShoppingCart/>} />
 
         </Routes>
