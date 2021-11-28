@@ -3,7 +3,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import RestaurantProfile from "./components/Profile/RestaurantProfile";
-import CustomerProfile from "./components/Profile/idk";
+import CustomerProfile from "./components/Profile/CustomerProfile";
 import Menu from "./components/Menu"
 import Login from "./components/Login";
 import CreateUser from "./components/CreateUser";
