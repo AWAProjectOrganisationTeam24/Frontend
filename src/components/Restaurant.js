@@ -1,18 +1,54 @@
 import React from "react";
-import Header from "./Header";
+import Header from "./partials/Header";
+import Foodcard from "./partials/FoodCard";
 
 import resimg from "./res.jpeg";
+import ProductCard from "./partials/RestaurantCard";
+import {data} from "./Data/Data";
+import FoodNotFound from "./FoodNotFound";
+
 function Restaurant() {
   const imgheight = {
     height: "300px",
   };
-  return (
+
+    const [items] = React.useState(data);
+    const [search, setSearch] = React.useState("");
+
+    const filterList = () => {
+        if (search === "") {
+            return items;
+        }
+        return items.filter(
+            (item) => item.location.toLowerCase().indexOf(search.toLowerCase()) !== -1
+        );
+    };
+
+        return (
     <div>
       {/* header */}
       <Header />
-   
 
-      <div className="container mt-4">
+        <div className="rowbox ">
+            {filterList().length > 0 ? (
+                <>
+                    {filterList().map((item) => (
+                        <div className="column ">
+                            <Foodcard
+                                name={item.name}
+                                price={item.price}
+                            />
+                        </div>
+                    ))}
+                </>
+            ) : (
+                <div className="column">
+                    <FoodNotFound/>
+                </div>
+            )}
+        </div>
+
+        <div className="container mt-4">
         <div className="row ">
           <div className="col-md-12">
             <div class="card">
@@ -37,170 +73,9 @@ function Restaurant() {
             </div>
           </div>
         </div>
-
-        <div className="row mt-2">
-                <div className="col-md-3">
-                  <div class="card">
-                    <img
-                      class="card-img-top"
-                      src={resimg}
-                      alt="img1"
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">pizza</h5>
-
-                      <address class="card-text">$ 20.00</address>
-                      <small className="">
-                        <span class="badge badge-success">available</span>
-                        <button className="btn btn-warning">
-                          
-                          + Add to cart
-                        </button>
-                      </small>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-3"> <div class="card">
-                    <img
-                      class="card-img-top"
-                      src={resimg}
-                      alt="cap"
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">pizza</h5>
-
-                      <address class="card-text">$ 20.00</address>
-                      <small className="">
-                        <span class="badge badge-success">available</span>
-                        <button className="btn btn-warning">
-                          {" "}
-                          + Add to cart
-                        </button>
-                      </small>
-                    </div>
-                  </div></div>
-                <div className="col-md-3"> <div class="card">
-                    <img
-                      class="card-img-top"
-                      src={resimg}
-                      alt="cap2"
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">pizza</h5>
-
-                      <address class="card-text">$ 20.00</address>
-                      <small className="">
-                        <span class="badge badge-success">available</span>
-                        <button className="btn btn-warning">
-                        
-                          + Add to cart
-                        </button>
-                      </small>
-                    </div>
-                  </div></div>
-                <div className="col-md-3"> <div class="card">
-                    <img
-                      class="card-img-top"
-                      src={resimg}
-                      alt=" cap3"
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">pizza</h5>
-
-                      <address class="card-text">$ 20.00</address>
-                      <small className="">
-                        <span class="badge badge-success">available</span>
-                        <button className="btn btn-warning">
-                          {" "}
-                          + Add to cart
-                        </button>
-                      </small>
-                    </div>
-                  </div></div>
-              </div>
-
-              <div className="row mt-4">
-                <div className="col-md-3">
-                  <div class="card">
-                    <img
-                      class="card-img-top"
-                      src={resimg}
-                      alt="cap1"
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">pizza</h5>
-
-                      <address class="card-text">$ 20.00</address>
-                      <small className="">
-                        <span class="badge badge-success">available</span>
-                        <button className="btn btn-warning">
-                          {" "}
-                          + Add to cart
-                        </button>
-                      </small>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-3"> <div class="card">
-                    <img
-                      class="card-img-top"
-                      src={resimg}
-                      alt=" cap4"
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">pizza</h5>
-
-                      <address class="card-text">$ 20.00</address>
-                      <small className="">
-                        <span class="badge badge-success">available</span>
-                        <button className="btn btn-warning">
-                       
-                          + Add to cart
-                        </button>
-                      </small>
-                    </div>
-                  </div></div>
-                <div className="col-md-3"> <div class="card">
-                    <img
-                      class="card-img-top"
-                      src={resimg}
-                      alt="img4"
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">pizza</h5>
-
-                      <address class="card-text">$ 20.00</address>
-                      <small className="">
-                        <span class="badge badge-success">available</span>
-                        <button className="btn btn-warning">
-                         
-                          + Add to cart
-                        </button>
-                      </small>
-                    </div>
-                  </div></div>
-                <div className="col-md-3"> <div class="card">
-                    <img
-                      class="card-img-top"
-                      src={resimg}
-                      alt="img5"
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">pizza</h5>
-
-                      <address class="card-text">$ 20.00</address>
-                      <small className="">
-                        <span class="badge badge-success">available</span>
-                        <button className="btn btn-warning">
-                       
-                          + Add to cart
-                        </button>
-                      </small>
-                    </div>
-                  </div></div>
-              </div>
-      </div>
     </div>
+    </div>
+
   );
 }
 

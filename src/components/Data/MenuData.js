@@ -5,22 +5,22 @@ export const data = {
    
     {
         id: '1',
-        foodName:"Pizza Mozzarella ",
-        foodprize:2000,
-        fooddetails:"Well Flavored pizza",
+        foodName:"Creamy Salmon dish ",
+        foodprize:17.90 ,
+      
         
     },
     {
         id: '2',
         foodName:"Pizza Godzilla",
-        foodprize:230,
-        fooddetails:"Well Flavored pizza",
+        foodprize:12,
+       
         
     },
     {
         id: '3',
         foodName:"Pizza Chinzilla ",
-        foodprize:150,
+        foodprize:15,
         fooddetails:"Well Flavored pizza",
         
     },
@@ -28,7 +28,7 @@ export const data = {
         id: '4',
         foodName:"Pizza 4",
         foodprize:10,
-        fooddetails:"Well Flavored pizza",
+        
         
     }
     
