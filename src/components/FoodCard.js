@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import "./FoodCard.css";
 import resimg from "./res.jpeg";
 
@@ -18,11 +18,11 @@ function ProductCard({ restaurantsName, location, address, status }) {
           
             <span class="badge badge-success">{status}</span>
           </small>
-          <button className="btn btn-outline-success"><Link to='/restaurant/menu/id/'>View Restaurant</Link></button>
+          <button className="btn btn-outline-success" onClick><Link to='/restaurant/menu/id/'>View Restaurant</Link></button>
         </div>
       </div>
     </div>
   );
 }
 
-export default ProductCard;
+export default ProductCard;*/
