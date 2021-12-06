@@ -20,12 +20,12 @@ class CreateUser extends Component {
 
     changeHandler = e => {
         this.setState({
-            firstname: e.target.value[10],
-            lastname: e.target.value[10],
-            mail: e.target.value[10],
-            psw: e.target.value[10],
-            address: e.target.value[10],
-            city: e.target.value[10]
+            firstname: e.target.value[0],
+            lastname: e.target.value[1],
+            mail: e.target.value[2],
+            psw: e.target.value[3],
+            address: e.target.value[4],
+            city: e.target.value[5]
         })
     }
 

@@ -10,7 +10,7 @@ function Header() {
     return (
         <div>
             <div class="topnav">
-                <a class="active" href="#home"> <img className="img" src={logo} alt="Logo"/></a>
+                <a class="active" href="/"> <img className="img" src={logo} alt="Logo"/></a>
                 <div className="header_right">
                     <Link to="/login">Login</Link>
 
