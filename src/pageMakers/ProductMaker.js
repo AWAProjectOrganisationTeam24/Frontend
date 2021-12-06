@@ -1,54 +1,10 @@
 
-/*    Submit(){
-        console.log("check")
-        const value1 = document.getElementById("Input1").value
-        const value2 = document.getElementById("Input2").value
-
-        const value3 = document.getElementById("Input3").value
-
-
-        console.log(value1)
-        console.log(value2)
-        console.log(value3)
-
-        this.setState({
-            message: ''
-        })
-    }
-
-    Back(){
-      this.setState({
-            message: ''
-    })
-}
-    clickHandler() {
-        this.setState({
-           message: <div>
-                        <button onClick={() => this.Back()}>X</button>
-                        <div>Product name<input type="text" id="product"/></div>
-                        <div>Restaurant<input type="text" id="restaurant"/></div>
-                        <div>Operation hours<input type="text" id="openHr"/></div>
-                        <button onClick={() => this.Submit()}>Submit</button>
-                    </div>
-        })
-        console.log(this)
-    }
-    render()  {
-        return(
-            <div>
-                <div>{this.state.message}</div>
-          <button onClick={() => this.clickHandler()}>Create Product</button>
-            </div>
-        )
-    }
-}
-*/
 import React, { Component } from 'react';
 import axios from "axios";
-import styles from './Login.module.css';
+import styles from '../components/Login.module.css';
 
 
-export default class ProductMaker extends Component {
+class ProductMaker extends Component {
     constructor(props) {
         super(props);
 
@@ -149,3 +105,4 @@ export default class ProductMaker extends Component {
             </div>
         )
     }}
+export default ProductMaker;
