@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 
 
+
 function App() {
     //to this const customer id you want to search
 
@@ -18,11 +19,16 @@ function App() {
   return (
 
 
-    <div className={styles.Profiletext}>
-      {profiledata.filter(profile => profile.id_customer === CustomerNUM).map(filteredPerson => (
-        <><h3>PRofile Info</h3>
+    <div >
+
+      <div className="container">
+        <div className="row mt-4">
+          <div className="col-md-4">
+          {profiledata.filter(profile => profile.id_customer === CustomerNUM).map(filteredPerson => (
+        <>
+        <h3>PRofile Info</h3>
         <div> 
-        Name: {filteredPerson.firstname}
+        <h1>Name: {filteredPerson.firstname}</h1>
               {filteredPerson.lastname}
 
           </div>
@@ -33,13 +39,16 @@ function App() {
         
         
       ))}
-      
-      <h3>Your Restaurants</h3>
+
+          </div>
+          <div className="col-md-4">
+          <h3>Your Restaurants</h3>
       <Link to="/restaurantMaker">New Restaurant</Link>
       {Restaurantdata.filter(Restaurant => Restaurant.id_customer === CustomerNUM).map(filteredRestaurant => (
         <>
         <div> 
-        RestarauntName: {filteredRestaurant.restaurantsName}
+          Restaurantname: 
+        <Link to="/Profile/Restaurant/:id_restaurant">{filteredRestaurant.restaurantsName}</Link>
              
 
           </div>
@@ -47,14 +56,16 @@ function App() {
           <div>Address: {filteredRestaurant.address}</div>
           <div></div>
           <topic></topic>
-          <Link to="/Profile/Restaurant/:id_restaurant">{filteredRestaurant.id_restaurant}</Link>
+         
           
           </>
         
         
       ))}
-      
-      <h3>Your Orders</h3>
+            
+          </div>
+          <div className="col-md-4">
+          <h3>Your Orders</h3>
       {Orderdata.filter(Order=>Order.id_order).map(filteredOrder => (
         <>
         <div className={styles.Profileorder}> 
@@ -79,6 +90,21 @@ function App() {
         
         
       ))}
+
+            
+          </div>
+        </div>
+      </div>
+      {/* end */}
+      
+      
+      
+      
+
+      
+      
+    
+
     </div>
   );
 }

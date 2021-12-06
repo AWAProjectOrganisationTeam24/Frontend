@@ -54,14 +54,37 @@ export default function Basket(props) {
                     </div>
                     <hr />
                     {/* location */}
+                    <div className="form-group">
+                      <label >Select Delivery Location</label>
+                      <select className="form-control">
+                        <option>location one</option>
+                        <option>location one</option>
+                        <option>location one</option>
 
+                      </select>
+                    </div>
+                    <p>Select payment Method</p>
+                    <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
+  
+  <label class="form-check-label" for="defaultCheck1">
+  <i class="fab  fa-cc-paypal"></i> Paypal 
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
+  
+  <label class="form-check-label" for="defaultCheck1">
+  <i class="fab fa-cc-visa"></i> Visa card
+  </label>
+</div>
                     {/* payme */}
                     <div>
                       <button
                         className="btn btn-success"
                         onClick={() => alert("Implement Checkout!")}
                       >
-                        Checkout
+                        Checkout <i class="fas fa-shopping-cart"></i>
                       </button>
                     </div>
                   </>

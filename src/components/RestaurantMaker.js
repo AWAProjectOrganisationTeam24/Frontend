@@ -1,6 +1,6 @@
 
 import React from 'react'
-import styles from './RestaurantMaker.module.css'
+// import styles from './RestaurantMaker.module.css'
 import axios from "axios";
 
 class RestaurantMaker extends React.Component{
@@ -80,8 +80,16 @@ class RestaurantMaker extends React.Component{
     clickHandler() {
         this.setState({
            message: <div className={ styles.RestaurantScreen }>
-                       <div>Restaurant name<input type="text" id="name"/></div>
-                       <div>Address<input type="text" id="address"/></div>
+
+                        <form>
+                            <div className="form-group">
+                                <label>Restaurant name</label>
+                                <input type="text" className="form-control" id="address"/>
+                            </div>
+                        </form>
+
+                       {/* <div><input type="text" id="name"/></div>
+                       <div>Address</div>
                        <div>City<input type="text" id="city"/></div>
                        <div>Operating hours<input type="text" id="openHr"/></div>
                        <div>Restaurant type</div>
@@ -95,7 +103,8 @@ class RestaurantMaker extends React.Component{
                        <div><input type="radio" name="Moneychoice" value="€€"   id="Mony2"/>€€</div>
                        <div><input type="radio" name="Moneychoice" value="€€€"  id="Mony3"/>€€€</div>
                        <div><input type="radio" name="Moneychoice" value="€€€€" id="Mony4"/>€€€€</div>
-                       <button onClick={() => this.Submit()}>Submit</button>
+                       <button onClick={() => this.Submit()}>Submit</button> */}
+
                     </div>
         })
         console.log(this)
