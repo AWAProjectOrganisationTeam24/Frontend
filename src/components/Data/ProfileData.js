@@ -7,8 +7,8 @@ export const profiledata = [
        id_customer: '1',
        firstname:"aa ",
        lastname:"aaa ",
-       adress:"aaaa",
-       money:17.90 ,
+       address:"aaaa",
+       money:177.90 ,
      
        
    },
@@ -17,7 +17,7 @@ export const profiledata = [
     firstname:"bb ",
     lastname:"bbb ",
     adress:"bbbb",
-    money:12 ,
+    money:122.30 ,
   
     
 }

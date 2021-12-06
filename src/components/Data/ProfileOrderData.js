@@ -19,12 +19,12 @@ export const Orderdata = [
     },
     {
         id_order:'2',
-        id_customer: '2',
-        id_restaurant: '1',
+        id_customer: '1',
+        id_restaurant: '2',
         price: 100,
         time: '10.20',
         date: '11.1.1111',
-        status: 'aa',
+        status: 'ready',
         content: 'ready',
         paid: 'ready',
      
