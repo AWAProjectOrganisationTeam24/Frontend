@@ -21,8 +21,8 @@ function ProductCard(props) {
           <address class="card-text">$ {product.foodprize} euro</address>
           <small className="">
             <span class="badge badge-success">available</span>
-            <button onClick={() => onAdd(product)} className="btn btn-warning">
-              + Add to cart
+            <button onClick={() => onAdd(product)} className="text-white btn btn-warning">
+               Add to cart <i class="fas fa-cart-plus"></i>
             </button>
           </small>
         </div>

@@ -1,5 +1,4 @@
 import styles from './Profile.module.css'
-import profiledata from '../Data/ProfileData';
 import Restaurantdata from '../Data/ProfileRestData';
 import Orderdata from '../Data/ProfileOrderData';
 import { Link } from "react-router-dom";
@@ -10,7 +9,7 @@ function App() {
 
   return (
     <div className={styles.Profiletext}>
-      {Restaurantdata.filter(Restaurant => Restaurant.id_restaurant == RestaurantNUM).map(filteredRestaurant => (
+      {Restaurantdata.filter(Restaurant => Restaurant.id_restaurant === RestaurantNUM).map(filteredRestaurant => (
         <>
         <div> 
         RestarauntName: {filteredRestaurant.restaurantsName}
@@ -28,7 +27,7 @@ function App() {
       ))}
       
       <h3>Your Orders</h3>
-      {Orderdata.filter(Order => Order.id_restaurant == RestaurantNUM).map(filteredOrder => (
+      {Orderdata.filter(Order => Order.id_restaurant === RestaurantNUM).map(filteredOrder => (
         <>
         <div className={styles.Profileorder}> 
        

@@ -30,6 +30,41 @@ export const data = {
         foodprize:10,
         
         
-    }
+    },
+    {
+        id: '5',
+        foodName:"Creamy Salmon dish ",
+        foodprize:17.90 ,
+      
+        
+    },
+    {
+        id: '6',
+        foodName:"Creamy Salmon dish ",
+        foodprize:17.90 ,
+      
+        
+    },
+    {
+        id: '7',
+        foodName:"Creamy Salmon dish ",
+        foodprize:17.90 ,
+      
+        
+    },
+    {
+        id: '8',
+        foodName:"Creamy Salmon dish ",
+        foodprize:17.90 ,
+      
+        
+    },
+    {
+        id: '9',
+        foodName:"Creamy Salmon dish ",
+        foodprize:17.90 ,
+      
+        
+    },
     
 ]}

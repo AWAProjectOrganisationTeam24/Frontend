@@ -28,15 +28,15 @@ export default function Basket(props) {
 
                     <button
                       onClick={() => onRemove(item)}
-                      className="btn btn-warning"
+                      className="btn btn-warning text-white"
                     >
-                      -
+                      <i class="fas fa-cart-arrow-down"></i>
                     </button>
                     <button
-                      className="btn btn-sm btn-warning"
+                      className=" text-white btn btn-sm btn-warning"
                       onClick={() => onAdd(item)}
                     >
-                      +
+                      <i class="fas fa-cart-plus"></i>
                     </button>
 
                     <div>
@@ -53,6 +53,9 @@ export default function Basket(props) {
                       <div>${itemsPrice.toFixed(2)}</div>
                     </div>
                     <hr />
+                    {/* location */}
+
+                    {/* payme */}
                     <div>
                       <button
                         className="btn btn-success"

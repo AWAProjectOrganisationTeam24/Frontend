@@ -2,30 +2,24 @@ import styles from './Profile.module.css'
 import profiledata from '../Data/ProfileData';
 import Restaurantdata from '../Data/ProfileRestData';
 import Orderdata from '../Data/ProfileOrderData';
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
-/*function Topic() {
-    // The <Route> that rendered this component has a
-    // path of `/topics/:topicId`. The `:topicId` portion
-    // of the URL indicates a placeholder that we can
-    // get from `useParams()`.
-    let { id_restaurant } = useParams();
-  
-    return (
-      <div>
-        <h3>{id_restaurant}</h3>
-      </div>
-    );
-  }*/
+
 
 function App() {
     //to this const customer id you want to search
+
+   
+  
+    
   const CustomerNUM= 1;
   return (
+
+
     <div className={styles.Profiletext}>
-      {profiledata.filter(profile => profile.id_customer == CustomerNUM).map(filteredPerson => (
+      {profiledata.filter(profile => profile.id_customer === CustomerNUM).map(filteredPerson => (
         <><h3>PRofile Info</h3>
         <div> 
         Name: {filteredPerson.firstname}
@@ -42,7 +36,7 @@ function App() {
       
       <h3>Your Restaurants</h3>
       <Link to="/restaurantMaker">New Restaurant</Link>
-      {Restaurantdata.filter(Restaurant => Restaurant.id_customer == CustomerNUM).map(filteredRestaurant => (
+      {Restaurantdata.filter(Restaurant => Restaurant.id_customer === CustomerNUM).map(filteredRestaurant => (
         <>
         <div> 
         RestarauntName: {filteredRestaurant.restaurantsName}
@@ -61,7 +55,7 @@ function App() {
       ))}
       
       <h3>Your Orders</h3>
-      {Orderdata.filter(Order => Order.id_customer == CustomerNUM && Order.status == "ready").map(filteredOrder => (
+      {Orderdata.filter(Order=>Order.id_order).map(filteredOrder => (
         <>
         <div className={styles.Profileorder}> 
        

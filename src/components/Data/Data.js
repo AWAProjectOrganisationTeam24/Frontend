@@ -30,6 +30,15 @@ export const data = [
     menu: {},
   },
   {
+    restaurantsName: "Restaurant Pompier ",
+    location: "Helsinki ",
+    address: "Eteläesplanadi 8, 00101 ",
+    status: "Open",
+    opening:"5pm",
+    close:"11 pm",
+    menu: {},
+  },
+  {
     restaurantsName: "Bistro Popot ",
     location: "Lahti ",
     address: "Rautatienkatu 26, 15110  ",
