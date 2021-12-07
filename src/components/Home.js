@@ -1,24 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./partials/Header";
 import "../App.css";
 import ProductCard from "./partials/RestaurantCard";
 import Search from "./Search";
-import { data } from "./Data/Data";
+//import { data } from "./Data/Data";
 import FoodNotFound from "./FoodNotFound";
+import axios from "axios";
 
 
 function Home() {
-  // call the data from api
-  const [items] = React.useState(data);
+
+  const [items, setItems] = useState('');
   const [search, setSearch] = React.useState("");
+
+    useEffect(() => {
+        getRestaurants();
+    }, []);
+
+    // call the data from api
+    const getRestaurants = () => {
+        axios.get(`http://localhost:5000/`)
+            .then(res => {
+                const data = res.data;
+                setItems(data);
+            })
+            .catch(err => console.log('error'));
+    }
 
   const filterList = () => {
     if (search === "") {
       return items;
+    }else {
+        return items.filter(
+            (item) => item.city.toLowerCase().indexOf(search.toLowerCase()) !== -1
+        );
     }
-    return items.filter(
-      (item) => item.location.toLowerCase().indexOf(search.toLowerCase()) !== -1
-    );
   };
 
   return (
@@ -42,10 +58,11 @@ function Home() {
             {filterList().map((item) => (
               <div class="column ">
                 <ProductCard
-                  restaurantsName={item.restaurantsName}
-                  location={item.location}
+                  restaurantsName={item.name}
+                  location={item.city}
                   address={item.address}
-                  status={item.status}
+                  status={item.openHr}
+                  id={item.id_restaurant}
                 />
               </div>
             ))}
