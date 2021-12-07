@@ -1,34 +1,40 @@
-
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from './partials/Header'
 import "../App.css"
 import ProductCard from './MenuFood'
 import Search from './Search'
-import {data} from "./Data/MenuData"
 import FoodNotFound from './FoodNotFound'
 import Footer from './partials/Footer'
 import Basket from './Shoppingcart';
-import { useState } from 'react';
+import axios from "axios";
+import {useParams} from "react-router";
 
 
 
 function Home() {
-  // console.log(data)
   const [search, setSearch] = React.useState("");
+  const [products, setProducts ] = useState('');
 
-  const { products } = data;
-  // console.log("products")
-  // console.log(products)
   const [cartItems, setCartItems] = useState([]);
-  //console.log("cartItemcheck")
-  //console.log(cartItems)
+  const params = useParams();
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/products/restaurant/${params.id}`)
+        .then(res => {
+          const data = res.data;
+          setProducts(data);
+        })
+        .catch(err => console.log('error'));
+  }, [params.id]);
+
+
 
   const onAdd = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
+    const exist = cartItems.find((x) => x.id == product.id);
     if (exist) {
       setCartItems(
         cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+          x.id == product.id ? { ...exist, qty: exist.qty + 1 } : x
         )
       );
     } else {
@@ -36,7 +42,7 @@ function Home() {
     }
   };
   const onRemove = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
+    const exist = cartItems.find((x) => x.id == product.id);
     if (exist.qty === 1) {
       setCartItems(cartItems.filter((x) => x.id !== product.id));
     } else {
@@ -52,21 +58,16 @@ function Home() {
 
   const filterList = () => {
     if (search === "") {
-      // console.log("Filternone")
-      //console.log(products)
       return products;
+    } else{
+      return products.filter(
+          (item) => item.foodName.toLowerCase().indexOf(search.toLowerCase()) !== -1
+      );
     }
-    //console.log("Filtersomething")
-    //console.log(products)
-    return products.filter(
-      (item) => item.foodName.toLowerCase().indexOf(search.toLowerCase()) !== -1
-    );
   };
 
   return (
     <div className="main">
-      {/* header */}
-
       <div>
         <Header countCartItems={cartItems.length}></Header>
         <div></div>
@@ -78,19 +79,21 @@ function Home() {
         placeholder="Search Your Meal here.."
       />
 
-        <div> <Basket cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} /></div>
-      <div class="row">
+        <div>
+          <Basket cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />
+        </div>
+        <div className="row">
      
         {filterList().length > 0 ? (
           <>
-            {filterList().map((product) => (
-              <div class="column">
-                <ProductCard product={product} onAdd={onAdd} />
+            {filterList().map((products) => (
+              <div className="column">
+                <ProductCard product={products} onAdd={onAdd} />
               </div>
             ))}
           </>
         ) : (
-          <div class="column">
+          <div className="column">
             <FoodNotFound />
           </div>
         )}

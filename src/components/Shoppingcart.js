@@ -24,7 +24,7 @@ export default function Basket(props) {
                 {cartItems.map((item) => (
                   <div key={item.id}>
                     <img src={resimg} class="card-img-top" alt="cart-img" />
-                    <h4>{item.foodName}</h4>
+                    <h4>{item.name}</h4>
 
                     <button
                       onClick={() => onRemove(item)}
@@ -40,7 +40,7 @@ export default function Basket(props) {
                     </button>
 
                     <div>
-                      {item.qty} x ${item.foodprize.toFixed(2)}
+                      {item.qty} x ${item.price.toFixed(2)}
                     </div>
                   </div>
                 ))}

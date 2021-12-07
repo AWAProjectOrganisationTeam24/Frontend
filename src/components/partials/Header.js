@@ -4,7 +4,7 @@ import   './Header.css';
 
 import logo from '../logo.PNG';
 
-function Header() {
+function Header(id) {
 
     
     return (
@@ -14,7 +14,7 @@ function Header() {
                 <div className="header_right">
                     <Link to="/login">Login</Link>
 
-                    <Link to="/Profile/:id">Profile</Link>
+                    <Link to={`/profile/${id}`}>Profile</Link>
 
                     <Link to="/login/createUser">Register</Link>
                 </div>

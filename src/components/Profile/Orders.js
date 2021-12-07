@@ -10,7 +10,7 @@ function App() {
     <div className={styles.Profiletext}>
       
       <h3>Your Orders</h3>
-      {Orderdata.filter(Order => Order.id_customer == OrdersCustomerNUM && Order.status == "ready").map(filteredOrder => (
+      {Orderdata.filter(Order => Order.id_customer === OrdersCustomerNUM && Order.status === "ready").map(filteredOrder => (
         <>
         <div className={styles.Profileorder}> 
        
