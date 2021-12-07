@@ -4,17 +4,17 @@ import   './Header.css';
 
 import logo from '../logo.PNG';
 
-function Header() {
+function Header(id) {
 
     
     return (
         <div>
             <div class="topnav">
-                <a class="active" href="/"> <img className="img" src={logo} alt="Logo"/></a>
+                <a class="active" href="#home"> <img className="img" src={logo} alt="Logo"/></a>
                 <div className="header_right">
                     <Link to="/login">Login</Link>
 
-                    <Link to="/Profile/:id">Profile</Link>
+                    <Link to={`/profile/${id}`}>Profile</Link>
 
                     <Link to="/login/createUser">Register</Link>
                 </div>
