@@ -2,28 +2,28 @@ import React, { Component } from "react";
 import resimg from "./res.jpeg";
 import { Link } from "react-router-dom";
 import styles from "./Shoppingcart.module.css";
+
   class Shoppingcart extends Component {
     render(){
-      const {cartItems, onAdd, onRemove} = this.props;
-      const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.foodprize, 0);
+      const {cartItems, onAdd, onRemove, id_restaurant, id} = this.props;
+
+      const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
       return(
         <div>
           <div className="container">
             <div className="row mt-4">
-              <div className="col-md-7"></div>
                 <div className="col-md-5">
                   <div className="card cart">
-                    <div className="card-body"></div>
           {cartItems.length === 0 && <div className={styles.header}>Cart is empty</div>}
-          <div classname={styles.container}>
+          <div>
             <div className={styles.item}>
             {cartItems.map((item) => (
               <div key = {item.id}>
-                <img src={resimg} class="card-img-top" alt="cart-img" />
-                <h4>{item.foodName}</h4>
+                <img src={resimg} className="card-img-top" alt="cart-img" />
+                <h4>{item.name}</h4>
                 <div className={styles.cost}>
                   <div>
-                {item.qty} x ${item.foodprize.toFixed(2)}
+                {item.qty} x ${item.price.toFixed(2)}
                   </div>
                 <button className= {styles.itemButton} onClick={() => onRemove(item)}>
                 -
@@ -48,8 +48,11 @@ import styles from "./Shoppingcart.module.css";
                   <div>${itemsPrice}</div>
 
                   </div>
-                  <Link to={{pathname:'/restaurant/menu/:id/order'}}
-                         state={{cartItems, itemsPrice}}>
+                  <Link to={{pathname:`/makeOrder/${id_restaurant}/${id}`,
+                      state: { cartItems, itemsPrice },
+                  }}
+
+                        state={{ cartItems, itemsPrice}}>
                            <button>Proceed</button>
                          </Link>
                 </div>

@@ -3,14 +3,18 @@ import Header from "./partials/Header";
 import "../App.css";
 import ProductCard from "./partials/RestaurantCard";
 import Search from "./Search";
-//import { data } from "./Data/Data";
 import FoodNotFound from "./FoodNotFound";
 import axios from "axios";
+import {useParams} from "react-router";
+//import {UserAuthContext} from "./Contexts";
 
-
-function Home() {
-
-  const [items, setItems] = useState('');
+function Home(props) {
+    //const UserAuthContextValue = useContext(UserAuthContext);
+    const params = useParams();
+    if(params.id === undefined){
+        params.id = 'non'
+    }
+    const [items, setItems] = useState('');
   const [search, setSearch] = React.useState("");
 
     useEffect(() => {
@@ -39,36 +43,32 @@ function Home() {
 
   return (
     <div className="main">
-      {/* header */}
-      <Header />
-
+      <Header id={params.id}/>
       <Search
         searchParam={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search restaurant by city.."
       />
 
-      {/*  */}
-
-  
-
-      <div class="rowbox ">
+      <div className="rowbox ">
         {filterList().length > 0 ? (
           <>
             {filterList().map((item) => (
-              <div class="column ">
+              <div className="column ">
                 <ProductCard
                   restaurantsName={item.name}
                   location={item.city}
                   address={item.address}
                   status={item.openHr}
-                  id={item.id_restaurant}
+                  id_restaurant={item.id_restaurant}
+                  id={params.id}
+                  image = {item.image}
                 />
               </div>
             ))}
           </>
         ) : (
-          <div class="column">
+          <div className="column">
             <FoodNotFound />
           </div>
         )}

@@ -1,108 +1,99 @@
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
 import styles from '../components/Login.module.css';
+import {useNavigate, useParams} from "react-router";
+import {Link} from "react-router-dom";
 
 
-class ProductMaker extends Component {
-    constructor(props) {
-        super(props);
+function ProductMaker() {
 
-        this.state = {
-            id_restaurant: '',
-            category: '',
-            name: '',
-            description: '',
-            price: '',
-            image: ''
+    const navigate = useNavigate();
+    const params = useParams();
+    const [file, setFile] = useState();
+    const [fileName, setFileName] = useState("");
+
+    const [state, setState] = useState({
+        id_restaurant: params.id_restaurant,
+        category: '',
+        name: '',
+        description: '',
+        price: '',
+    })
+
+    function fileHandler(e) {
+        setFile(e.target.files[0]);
+        setFileName(e.target.files[0].name);
+    };
+    function changeHandler(e) {
+        const value = e.target.value;
+        setState({
+            ...state,
+            [e.target.name]: value
+        });
+    }
+    const submitHandler = async (e) => {
+        const formData = new FormData();
+
+        formData.append("file", file);
+        formData.append("fileName", fileName);
+        formData.append("id_restaurant", state.id_restaurant);
+        formData.append("name", state.name);
+        formData.append("category", state.category);
+        formData.append("description", state.description);
+        formData.append("price", state.price);
+
+        try {
+            //sending to database
+            const res = await axios.post(`http://localhost:5000/products/add-product/${params.id_restaurant}`, formData);
+            console.log(res);
+            console.log('product added to menu!');
+            navigate(`/profile/${params.id_customer}`, {replace: true});
+
+        } catch (err) {
+            console.log(err);
+            console.log('error');
         }
     }
 
-    changeHandler = e => {
-        this.setState({
-            id_restaurant: e.target.value[0],
-            category: e.target.value[1],
-            name: e.target.value[2],
-            description: e.target.value[3],
-            price: e.target.value[4],
-            image: e.target.value[5]
-        })
-    }
-
-    submitHandler = e => {
-        e.preventDefault();
-        console.log(this.state);
-
-        //send it to backend + ensure if goes bad
-        //get response from backend - if login & psw is OK -> show homepage
-        axios.post("http://localhost:5000/", {
-            id_restaurant: this.state.id_restaurant,
-            category: this.state.category,
-            name: this.state.name,
-            description: this.state.description,
-            price: this.state.price,
-            image: this.state.image
-        })
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
-
-    render() {
-        const { id_restaurant, category, name, description, price, image } = this.state
         return (
             <div className ={ styles.container }>
-                <form onSubmit={this.submitHandler}>
-                    <table>
-                        <tr>
-                            <td>Restaurant ID</td>
-                            <input type="text"
-                                   name="id_restaurant"
-                                   value={id_restaurant}
-                                   onChange={this.changeHandler} />
-                        </tr>
-                        <tr>
-                            <td>Category</td>
+                <form onSubmit={submitHandler}>
+
+                            <div>Category</div>
                             <input type="text"
                                    name="category"
-                                   value={category}
-                                   onChange={this.changeHandler} />
-                        </tr>
-                        <tr>
-                            <td>Name</td>
+                                   value={state.category}
+                                   onChange={changeHandler} />
+
+                            <div>Name</div>
                             <input type="text"
                                    name="name"
-                                   value={name}
-                                   onChange={this.changeHandler} />
-                        </tr>
-                        <tr>
-                            <td>Description</td>
+                                   value={state.name}
+                                   onChange={changeHandler} />
+
+                            <div>Description</div>
                             <input type="text"
                                    name="description"
-                                   value={description}
-                                   onChange={this.changeHandler} />
-                        </tr>
-                        <tr>
-                            <td>Price</td>
+                                   value={state.description}
+                                   onChange={changeHandler} />
+
+                            <div>Price</div>
                             <input type="text"
                                    name="price"
-                                   value={price}
-                                   onChange={this.changeHandler} />
-                        </tr>
-                        <tr>
-                            <td>Image</td>
-                            <input type="text"
+                                   value={state.price}
+                                   onChange={changeHandler} />
+
+                            <div>Image</div>
+                            <input type="file"
                                    name="image"
-                                   value={image}
-                                   onChange={this.changeHandler} />
-                        </tr>
-                    </table>
+                                   onChange={fileHandler}
+                            />
+
                     <button type="submit">Create product</button>
                 </form>
+                <Link to={`/profile/restaurant/${params.id_manager}/${params.id_restaurant}`}>Back to restaurant profile</Link> <hr/><br/>
             </div>
         )
-    }}
+    }
 export default ProductMaker;

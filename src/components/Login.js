@@ -1,82 +1,86 @@
-import React, { Component } from 'react';
-import axios from "axios";
+import React, { useState, useContext } from 'react';
 import { Link } from "react-router-dom";
 import styles from './Login.module.css';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import {UserAuthContext} from './Contexts'
+import Constants from "./Constants.json";
 
+export default function Login(props) {
+    const UserAuthContextValue = useContext(UserAuthContext);
+    let navigate = useNavigate();
+    const [ loginProcessState, setLoginProcessState ] = useState("idle");
 
-class Login extends Component {
-    constructor(props) {
-        super(props);
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        setLoginProcessState("processing");
+        try {
+            const result = await axios.post(Constants.API_ADDRESS + '/customer/login', null, {
+                auth: {
+                    username: e.target.mail.value,
+                    password: e.target.psw.value
+                }
+            })
 
-        this.state = {
-            mail: '',
-            psw: '',
-            token: ''
+            setLoginProcessState("success");
+            setTimeout(() => {
+                setLoginProcessState("idle")
+                UserAuthContextValue.login(result.data.token);
+               // console.log(UserAuthContextValue);
+                navigate(`/${result.data.id_customer}`, {replace: true});
+            }, 1500);
+        } catch (error) {
+            console.error(error.message);
+            setLoginProcessState("error");
+            setTimeout(() => setLoginProcessState("idle"), 1500);
         }
     }
+    let loginUIControls = null;
+    switch(loginProcessState) {
+        case "idle":
+            loginUIControls = <button type="submit">Login</button>
+            break;
 
-    setMail = e => {
-        this.setState({ mail: e.target.value })
+        case "processing":
+            loginUIControls = <span style={{color: 'blue'}}>Processing login...</span>
+            break;
+
+        case "success":
+            loginUIControls = <span style={{color: 'green'}}>Login successful</span>
+            break;
+
+        case "error":
+            loginUIControls = <span style={{color: 'red'}}>Error</span>
+            break;
+
+        default:
+            loginUIControls = <button type="submit">Login</button>
     }
-    setPsw = e => {
-        this.setState({ psw: e.target.value })
-    }
-
-    submitHandler = e => {
-        e.preventDefault();
-        console.log(this.state);
-
-        //send it to backend + ensure if goes bad
-        //get response from backend - if login & psw is OK -> show homepage
-        axios.post("http://localhost:5000/customer/login", {
-            mail: this.state.mail,
-            psw: this.state.psw
-        })
-            .then(res => {
-                console.log('token');
-                console.log(res);
-                this.setState({token: res.token});
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
-
-    render() {
-        const { mail, psw } = this.state
         return (
             <div className ={ styles.container }>
-                <form onSubmit={this.submitHandler}>
-
-                    
-                    <table>
-                        <tr>
-                            <td>Mail</td>
+                <form onSubmit={submitHandler}>
+                    <div>
+                        <div>
+                            <div>Mail</div>
                             <input type="text"
                                    placeholder="Your mail"
                                    name="mail"
-                                   value={mail}
-                                   onChange={this.setMail} />
-                        </tr>
-                        <tr>
-                            <td>Password</td>
-                            <input type="text"
+                                    />
+                        </div>
+                        <div>
+                            <div>Password</div>
+                            <input type="password"
                                    placeholder="Password"
                                    name="psw"
-                                   value={psw}
-                                   onChange={this.setPsw} />
-                        </tr>
-                    </table>
-                    <button type="submit">Login</button>
+                                   />
+                        </div>
+                    </div>
+                    <div>
+                        { loginUIControls }
+                    </div>
                     <Link to = 'createUser'><button>Sign up</button></Link>
                 </form>
-
-               
-
-
-
             </div>
         )
-    }}
-export default Login;
+    }
 

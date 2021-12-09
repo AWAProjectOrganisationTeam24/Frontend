@@ -1,27 +1,73 @@
 import styles from './Profile.module.css'
-import Restaurantdata from '../Data/ProfileRestData';
-import Orderdata from '../Data/ProfileOrderData';
 import { Link } from "react-router-dom";
-import react from 'react';
 import axios from "axios";
 import {useParams} from "react-router";
-import * as React from "react";
-import {useEffect} from "react/cjs/react.production.min";
+import React, {useEffect} from "react";
+import Header from "../Header";
+import resimg from "../res.jpeg";
 
 
 function App() {
-  const id_restaurant = useParams();
-  const [state, setState] = React.useState('');
+  const params = useParams();
+  const [state, setState] = React.useState([]);
 
 
   useEffect(() => {
-  axios.get(`http://localhost:5000/orders/restaurant/${id_restaurant.id}`)
-      .then(res => {
-      const data = res.data;
-      setState(data[0]);
-      })
-      .catch(err => console.log('error'));
-      }, [id_restaurant.id]);
+      axios.get(`http://localhost:5000/view-restaurant/${params.id_manager}`)
+          .then(res => {
+          const data = res.data;
+          setState(data);
+          })
+          .catch(err => console.log('error'));
+      }, [params.id_manager]);
+
+
+
+  return (
+    <div className={styles.Profiletext}>
+        <Header id={params.id} />
+            {state.map((item) => (
+                        <div key = {item.id_restaurant}>
+                            <img src={resimg} className={styles.img}  alt="cart-img" /><br/>
+                            Restaraunt Name: <h4>{item.name}</h4>
+                            <br/>
+                            <div>Address: {item.address}</div><br/>
+                            <div> City: {item.city}</div><br/>
+                            <Link to={`/productMaker/${params.id_manager}/${item.id_restaurant}`}>New Menu Product</Link><br/>
+                            <Link to={`/restaurant-orders/${params.id_manager}/${item.id_restaurant}`}>Show orders</Link> <hr/><br/>
+                            <Link to={`/profile/${params.id_manager}`}>Back to personal profile</Link> <hr/><br/>
+                        </div>
+            ))}
+
+
+
+    </div>
+  );
+}
+
+export default App;
+
+/*
+ <h3>Your Orders</h3>
+        <div className={styles.Profileorder}>
+
+        <div> id_order:{state.id_order}</div>
+        <div> id_customer: {state.id_customer}</div>
+        <div> id_restaurant: {state.id_restaurant}</div>
+        <div> price: {state.price}</div>
+        <div> time: {state.time}</div>
+        <div> date: {state.date}</div>
+        <div>
+        <div> status: <div  id={"status"}>{state.status} </div></div>
+    <input type="text" name="status" value={state.status} onChange={changeHandler} />
+        </div>
+        <div> content: {state.content}</div>
+        <div> paid: {state.paid}</div>
+
+        <button type="submit" onClick={submitHandler}>Submit</button>
+          </div>
+
+
 
 
   function changeHandler(e) {
@@ -34,7 +80,7 @@ function App() {
   function submitHandler(e) {
     e.preventDefault();
 
-    axios.post(`http://localhost:5000/orders/edit-order-restaurant/${id_restaurant.id}`, {
+    axios.post(`http://localhost:5000/orders/edit-order-restaurant/${state.id_restaurant}`, {
       id_order: state.id_order,
       id_customer: state.id_customer,
       id_restaurant: state.id_restaurant,
@@ -52,43 +98,4 @@ function App() {
           console.log(err)
         })
   }
-   function changeValue(value) {
-    console.log(value);
-    document.getElementById('status').innerHTML=value;
-    console.log(value);
-  }
-
-  return (
-    <div className={styles.Profiletext}>
-        <div> 
-        RestarauntName: {state.name}
-
-          </div>
-          City: {state.city}
-          <div>Address: {state.address}</div>
-          <div></div>
-          <Link to="/productMaker">New Menu Item</Link>
-      
-      <h3>Your Orders</h3>
-        <div className={styles.Profileorder}> 
-       
-        <div> id_order:{state.id_order}</div>
-        <div> id_customer: {state.id_customer}</div>
-        <div> id_restaurant: {state.id_restaurant}</div>
-        <div> price: {state.price}</div>
-        <div> time: {state.time}</div>
-        <div> date: {state.date}</div>
-        <div>
-        <div> status: <div  id={"status"}>{state.status} </div></div>
-    <input type="text" name="status" value={state.status} onChange={changeHandler} />
-        </div>
-        <div> content: {state.content}</div>
-        <div> paid: {state.paid}</div>
-        
-        <button type="submit" onClick={submitHandler}>Submit</button>
-          </div>
-    </div>
-  );
-}
-
-export default App;
+ */

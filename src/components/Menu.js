@@ -19,22 +19,22 @@ function Home() {
   const params = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/products/restaurant/${params.id}`)
+    axios.get(`http://localhost:5000/products/restaurant/${params.id_restaurant}`)
         .then(res => {
           const data = res.data;
           setProducts(data);
         })
         .catch(err => console.log('error'));
-  }, [params.id]);
+  }, [params.id_restaurant]);
 
 
 
   const onAdd = (product) => {
-    const exist = cartItems.find((x) => x.id == product.id);
+    const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
       setCartItems(
         cartItems.map((x) =>
-          x.id == product.id ? { ...exist, qty: exist.qty + 1 } : x
+          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
         )
       );
     } else {
@@ -42,7 +42,7 @@ function Home() {
     }
   };
   const onRemove = (product) => {
-    const exist = cartItems.find((x) => x.id == product.id);
+    const exist = cartItems.find((x) => x.id === product.id);
     if (exist.qty === 1) {
       setCartItems(cartItems.filter((x) => x.id !== product.id));
     } else {
@@ -54,14 +54,12 @@ function Home() {
     }
   };
 
-  // call the data from api
-
   const filterList = () => {
     if (search === "") {
       return products;
     } else{
       return products.filter(
-          (item) => item.foodName.toLowerCase().indexOf(search.toLowerCase()) !== -1
+          (item) => item.name.toLowerCase().indexOf(search.toLowerCase()) !== -1
       );
     }
   };
@@ -80,7 +78,11 @@ function Home() {
       />
 
         <div>
-          <Basket cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />
+          <Basket cartItems={cartItems}
+                  onAdd={onAdd}
+                  onRemove={onRemove}
+                  id={params.id}
+                  id_restaurant={params.id_restaurant}/>
         </div>
         <div className="row">
      
@@ -88,7 +90,10 @@ function Home() {
           <>
             {filterList().map((products) => (
               <div className="column">
-                <ProductCard product={products} onAdd={onAdd} />
+                <ProductCard product={products}
+                             onAdd={onAdd}
+                             image = {products.image}
+                />
               </div>
             ))}
           </>
@@ -98,8 +103,6 @@ function Home() {
           </div>
         )}
       </div>
-
-
       <Footer />
     </div>
   );

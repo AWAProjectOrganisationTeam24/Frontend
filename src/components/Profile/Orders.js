@@ -1,41 +1,68 @@
 import styles from './Profile.module.css'
-import Orderdata from '../Data/ProfileOrderData';
+import {useParams} from "react-router";
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, {useContext, useEffect} from "react";
+import Constants from "../Constants.json";
+import {UserAuthContext} from "../Contexts";
+import Header from "../Header";
 
 
 function App() {
+
+    let navigate = useNavigate();
+
     //to this const customer id you want to search
-  const OrdersCustomerNUM= 2;
+    const [state, setState] = React.useState([]);
+    const id_customer = useParams();
 
-  return (
-    <div className={styles.Profiletext}>
-      
-      <h3>Your Orders</h3>
-      {Orderdata.filter(Order => Order.id_customer == OrdersCustomerNUM && Order.status == "ready").map(filteredOrder => (
-        <>
-        <div className={styles.Profileorder}> 
-       
-        <div> id_order:{filteredOrder.id_order}</div>
-        <div> id_customer: {filteredOrder.id_customer}</div>
-        <div> id_restaurant: {filteredOrder.id_restaurant}</div>
-        <div> price: {filteredOrder.price}</div>
-        <div> time: {filteredOrder.time}</div>
-        <div> date: {filteredOrder.date}</div>
-        <div> status: {filteredOrder.status}</div>
-        <div> content: {filteredOrder.content}</div>
-        <div> paid: {filteredOrder.paid}</div>
-        
+    const UserAuthContextValue = useContext(UserAuthContext);
 
-          </div>
-      
-          
-          
-          
-          </>
-        
-        
-      ))}
-    </div>
-  );
+    useEffect(() => {
+        axios.get(Constants.API_ADDRESS + `/orders/customer/${id_customer.id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+            }
+        })
+            .then(res => {
+                if (res.data === undefined) {
+                    navigate(`/profile/${id_customer.id}`, {replace: true});
+                } else {
+                    const data = res.data;
+                    setState(data);
+                }
+            })
+            .catch(err => console.log('error'));
+    }, [id_customer.id]);
+
+
+    return (
+
+        <div className={styles.Profiletext}>
+            <Header/>
+            <h3>Your Orders</h3>
+            {state.length === 0 && <div className={styles.header}>You dont have any orders</div>}
+            {state.length !== 0 && (
+                <>
+                    {state.map((item) => (
+                        <div key={item.id_restaurant}>
+                            <div className={styles.Profileorder}>
+                                <div> id_customer: {id_customer.id}</div>
+                                <div> id_restaurant: {item.id_restaurant}</div>
+                                <div> price: {item.price}</div>
+                                <div> time: {item.time}</div>
+                                <div> date: {item.date}</div>
+                                <div> status: {item.status}</div>
+                                <div> content: {item.content}</div>
+                                <div> paid: {item.paid}</div>
+                            </div>
+                        </div>
+                    ))}
+                </>
+            )}
+        </div>
+    );
 }
 
 export default App;

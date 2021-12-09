@@ -9,21 +9,15 @@ function Header() {
     
     return (
         <div>
-            {/* header */}
-
-            <div class="topnav">
+            <div className="topnav">
       
-            <a class="active" href="/"> <img className="img" src={logo} alt="Logo"/></a>
-
+            <a className="active" href="/">
+                <img className="img" src={logo} alt="Logo"/></a>
             <div className="header_right">
-                               <Link to="/profile">Profile</Link>
-
-                               <Link to="/login">Login</Link>
- 
-                                 <Link to="/login/createUser">Register</Link>
-
-                               <Link to="/">Cart</Link>
-
+                <Link to="/profile">Profile</Link>
+                <Link to="/login">Login</Link>
+                <Link to="/login/createUser">Register</Link>
+                <Link to="/">Cart</Link>
             </div>
 
             

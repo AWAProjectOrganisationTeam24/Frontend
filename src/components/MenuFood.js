@@ -1,15 +1,14 @@
 import React from 'react'
 import "./partials/RestaurantCard.css"
-import resimg from "./res.jpeg";
 
 
 function ProductCard(props) {
-  const { product, onAdd } = props;
+  const { product, onAdd, image} = props;
 
   return (
     <div>
       <div className="card">
-        <img className="card-img-top" src={resimg} alt=" cap4" />
+        <img className="card-img-top" src={`http://localhost:5000/images/products/${image}`} alt=" cap4" />
         <div className="card-body">
           <h5 className="card-title">{product.name}</h5>
 
