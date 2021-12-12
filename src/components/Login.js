@@ -7,6 +7,7 @@ import {UserAuthContext} from './Contexts'
 import Constants from "./Constants.json";
 
 export default function Login(props) {
+
     const UserAuthContextValue = useContext(UserAuthContext);
     let navigate = useNavigate();
     const [ loginProcessState, setLoginProcessState ] = useState("idle");
@@ -26,8 +27,13 @@ export default function Login(props) {
             setTimeout(() => {
                 setLoginProcessState("idle")
                 UserAuthContextValue.login(result.data.token);
-               // console.log(UserAuthContextValue);
-                navigate(`/${result.data.id_customer}`, {replace: true});
+                const token = result.data.token;
+                const id_customer = result.data.id_customer;
+
+                localStorage.setItem('token', JSON.stringify(token));
+                localStorage.setItem('id_customer', JSON.stringify(id_customer));
+
+                navigate(`/`, {replace: true});
             }, 1500);
         } catch (error) {
             console.error(error.message);

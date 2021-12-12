@@ -3,9 +3,11 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import RestaurantProfile from "./components/Profile/RestaurantProfile";
 import CustomerProfile from "./components/Profile/CustomerProfile";
-import ProfileOrders from "./components/Profile/Orders";
+import ProfileOrders from "./components/Profile/CustomerOrders";
+import ProfileEditOrders from "./components/Profile/CustomerEditOrders";
 import Menu from "./components/Menu"
 import Login from "./components/Login";
+import Logout from "./components/Logout";
 import CreateUser from "./components/CreateUser";
 import RestaurantMaker from "./pageMakers/RestaurantMaker";
 import ProductMaker from "./pageMakers/ProductMaker";
@@ -42,7 +44,7 @@ function App() {
     //unprotected routes
     let authRoutes = <>
         <Route path="/login" element={<Login/>} />
-        <Route path="/logout" element={<Login/>} />
+        <Route path="/logout" element={<Logout/>} />
         <Route path="/login/createUser" element={<CreateUser/> } />
     </>
 
@@ -66,14 +68,14 @@ function App() {
                         authRoutes
                     }
                   <Route path="/profile/orders/:id" element={<ProfileOrders/>}/>
+                  <Route path="/profile/customer-order/:id/:id_order" element={<ProfileEditOrders/>}/>
                   <Route path="/profile/restaurant/:id/:id_manager" element={<RestaurantProfile/>}/>
                   <Route exact path="/restaurant-orders/:id_manager/:id_restaurant" element={<RestaurantOrders/>}/>
                   <Route exact path="/restaurant-orders/:id_restaurant/:id_order" element={<RestaurantEditOrder/>}/>
                   <Route exact path="/" element={<Home/>}/>
-                  <Route exact path="/:id" element={<Home/>}/>
 
                   <Route exact path="/makeOrder/:id_restaurant/:id" element={<Order/>} />
-                  <Route path="/profile/:id" element={<CustomerProfile/> } />
+                  <Route path="/profile" element={<CustomerProfile/> } />
 
                   <Route path="/restaurant/menu/:id_restaurant/:id" element={<Menu />}/>
                   <Route path="/restaurantMaker/:id_customer/:id" element={<RestaurantMaker/> } />

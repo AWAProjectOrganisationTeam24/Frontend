@@ -1,11 +1,11 @@
 import styles from './Profile.module.css'
 import {useParams} from "react-router";
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import axios from "axios";
 import React, {useContext, useEffect} from "react";
 import Constants from "../Constants.json";
 import {UserAuthContext} from "../Contexts";
-import Header from "../Header";
+import Header from "../partials/Header";
 
 
 function App() {
@@ -41,6 +41,8 @@ function App() {
 
         <div className={styles.Profiletext}>
             <Header/>
+            <Link to={`/profile`}>Back to profile</Link> <hr/><br/>
+
             <h3>Your Orders</h3>
             {state.length === 0 && <div className={styles.header}>You dont have any orders</div>}
             {state.length !== 0 && (
@@ -57,8 +59,9 @@ function App() {
                                 <div> content: {item.content}</div>
                                 <div> paid: {item.paid}</div>
                             </div>
+                            <Link to={`/profile/customer-order/${id_customer.id}/${item.id_order}`}>Confirm delivery</Link> <hr/><br/>
                         </div>
-                    ))}
+                        ))}
                 </>
             )}
         </div>

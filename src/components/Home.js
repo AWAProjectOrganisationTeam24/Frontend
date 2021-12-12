@@ -17,6 +17,7 @@ function Home(props) {
     const [items, setItems] = useState('');
   const [search, setSearch] = React.useState("");
 
+
     useEffect(() => {
         getRestaurants();
     }, []);
@@ -43,7 +44,7 @@ function Home(props) {
 
   return (
     <div className="main">
-      <Header id={params.id}/>
+      <Header />
       <Search
         searchParam={search}
         onChange={(e) => setSearch(e.target.value)}

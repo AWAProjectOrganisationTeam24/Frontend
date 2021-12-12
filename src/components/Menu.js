@@ -8,6 +8,7 @@ import Footer from './partials/Footer'
 import Basket from './Shoppingcart';
 import axios from "axios";
 import {useParams} from "react-router";
+import {UserAuthContext} from "./Contexts";
 
 
 
@@ -17,6 +18,8 @@ function Home() {
 
   const [cartItems, setCartItems] = useState([]);
   const params = useParams();
+
+
 
   useEffect(() => {
     axios.get(`http://localhost:5000/products/restaurant/${params.id_restaurant}`)

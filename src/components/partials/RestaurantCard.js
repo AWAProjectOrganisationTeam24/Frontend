@@ -3,10 +3,8 @@ import "./RestaurantCard.css";
 
 import { Link } from "react-router-dom";
 
-function ProductCard({ id_restaurant, id, restaurantsName, location, address, status, image }) {
-  if(!id){
-    id = 'non';
-  }
+function ProductCard({ id_restaurant, restaurantsName, location, address, status, image }) {
+ const id = localStorage.id_customer;
   return (
     <div>
       <div className="card mt-4">

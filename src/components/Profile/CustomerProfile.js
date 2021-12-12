@@ -5,18 +5,18 @@ import {useParams} from "react-router";
 import axios from "axios";
 import { UserAuthContext } from '../Contexts'
 import Constants from '../Constants.json'
-import Header from "../Header";
+import Header from "../partials/Header";
 
 
 export default function App() {
     const UserAuthContextValue = useContext(UserAuthContext);
 
-    //to this const customer id you want to search
-    const id_customer = useParams();
+
+    const id_customer = localStorage.id_customer;
     const [state, setState] = React.useState('');
 
     useEffect(() => {
-     axios.get(Constants.API_ADDRESS + `/customer/view-customer/${id_customer.id}`, {
+     axios.get(Constants.API_ADDRESS + `/customer/view-customer/${id_customer}`, {
           headers: {
               'Content-Type': 'application/json',
               'Authorization': 'Bearer ' + UserAuthContextValue.jwt
@@ -27,7 +27,7 @@ export default function App() {
          setState(data[0]);
      })
          .catch(err => console.log('error'));
-    }, [id_customer.id]);
+    }, [id_customer]);
 
 
   return (

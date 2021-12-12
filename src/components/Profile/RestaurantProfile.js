@@ -2,18 +2,24 @@ import styles from './Profile.module.css'
 import { Link } from "react-router-dom";
 import axios from "axios";
 import {useParams} from "react-router";
-import React, {useEffect} from "react";
-import Header from "../Header";
-import resimg from "../res.jpeg";
+import React, {useEffect, useContext} from "react";
+import Header from "../partials/Header";
+import {UserAuthContext} from "../Contexts";
 
 
 function App() {
   const params = useParams();
   const [state, setState] = React.useState([]);
 
+    const UserAuthContextValue = useContext(UserAuthContext);
 
   useEffect(() => {
-      axios.get(`http://localhost:5000/view-restaurant/${params.id_manager}`)
+      axios.get(`http://localhost:5000/view-restaurant/${params.id_manager}`, {
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+          }
+      })
           .then(res => {
           const data = res.data;
           setState(data);
@@ -28,7 +34,7 @@ function App() {
         <Header id={params.id} />
             {state.map((item) => (
                         <div key = {item.id_restaurant}>
-                            <img src={resimg} className={styles.img}  alt="cart-img" /><br/>
+                            <img src={`http://localhost:5000/images/products/${item.image}`} className={styles.img}  alt="cart-img" /><br/>
                             Restaraunt Name: <h4>{item.name}</h4>
                             <br/>
                             <div>Address: {item.address}</div><br/>

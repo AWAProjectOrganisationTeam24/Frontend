@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { UserAuthContext } from '../Contexts';
 import logo from '../logo.PNG';
 
-function Header(id) {
+function Header() {
 
     const UserAuthContextValue = useContext(UserAuthContext);
     return (
@@ -16,7 +16,7 @@ function Header(id) {
                 <div className="header_right">
                     {UserAuthContextValue.jwt != null ?
                         <div>
-                            <Link to={`/profile/${id}`}>Profile</Link>
+                            <Link to={`/profile`}>Profile</Link>
                             <Link to={`/logout`}><button onClick={() => UserAuthContextValue.logout()} >Logout</button></Link>
                         </div>
                         :

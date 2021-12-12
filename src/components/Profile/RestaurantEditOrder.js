@@ -1,16 +1,14 @@
 import styles from './Profile.module.css'
 import {useParams} from "react-router";
-import {Link, useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import axios from "axios";
 import React, {useContext, useEffect} from "react";
 import Constants from "../Constants.json";
 import {UserAuthContext} from "../Contexts";
-import Header from "../Header";
+import Header from "../partials/Header";
 
 
 function App() {
-
-    let navigate = useNavigate();
 
     //to this const customer id you want to search
     const [state, setState] = React.useState([]);
@@ -71,7 +69,6 @@ function App() {
                             <div><input type="radio" name="status" value="Preparing" onChange={changeHandler}/>Preparing</div>
                             <div><input type="radio" name="status" value="Ready for delivery" onChange={changeHandler}/>Ready for delivery</div>
                             <div><input type="radio" name="status" value="Delivering" onChange={changeHandler}/>Delivering</div>
-                            <div><input type="radio" name="status" value="Delivered" onChange={changeHandler}/>Delivered</div>
                             <br/>
 
 

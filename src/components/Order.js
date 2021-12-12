@@ -1,10 +1,14 @@
-import React, {useState, useEffect} from "react";
+import React, { useContext, useState, useEffect} from "react";
 import {useLocation, useNavigate, useParams} from "react-router";
 import {Link} from 'react-router-dom'
 import axios from "axios";
 import Constants from "./Constants.json";
+import Header from "./partials/Header";
+import { UserAuthContext } from './Contexts'
 
 function Order(props) {
+
+    const UserAuthContextValue = useContext(UserAuthContext);
 
     const items = useLocation();
     const params = useParams();
@@ -19,6 +23,20 @@ function Order(props) {
         status: 'ordered',
         paid: 1
     })
+    const [customer, setCustomer] = useState('');
+
+    useEffect(() => {
+        axios.get(Constants.API_ADDRESS + `/customer/view-customer/${params.id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+            }
+        }).then(res => {
+                const data = res.data[0];
+                setCustomer(data);
+            })
+            .catch(err => console.log('error'))
+    }, [params.id]);
 
     function changeHandler(e) {
         const value = e.target.value;
@@ -30,13 +48,7 @@ function Order(props) {
 
 
     const submitHandler = async (e) => {
-        console.log(params.id);
-        if(params.id === 'non'){
-            alert('You have to be logged in to order!');
-           console.log('You have to be logged in to order!');
-            navigate(`/login`, { replace: true });
-        }else{
-            if(state.money > price){
+            if(customer.money > price){
                 //set time
                 const d = new Date();
                 const month = d.getMonth() + 1;
@@ -54,7 +66,7 @@ function Order(props) {
                     paid: state.paid
                 })
                     .then(res => {
-                        navigate(`/${params.id_customer}`, {replace: true});
+                        navigate(`/`, {replace: true});
                     })
                     .catch(err => console.log('error'));
             }else{
@@ -62,8 +74,6 @@ function Order(props) {
                 console.log('You dont have enought money!');
                 navigate(`/profile/${params.id}`, { replace: true });
             }
-            }
-
     };
     useEffect(() => {
         setCart(items.state.cartItems);
@@ -72,6 +82,8 @@ function Order(props) {
 
 
     return(
+        <>
+            <Header />
           <div className="container">
               <h3>Order: </h3>
                   {cartItems.map((e) =>
@@ -84,7 +96,7 @@ function Order(props) {
                       </div>
                   )}
                 <div>Total: {price}€ </div>
-                <div>Money: {state.money}€</div>
+                <div>Money: {customer.money}€</div>
                 <div>Enter ordering information:</div>
                 <div>
                     <form>
@@ -119,7 +131,7 @@ function Order(props) {
                                     required
                                   />
                             </div>
-                            <Link to={{pathname:`/profile/${params.id}`}}>
+                            <Link to={{pathname:`/profile/orders/${params.id}`}}>
                                 <button onClick={() => submitHandler()}>Pay</button>
                             </Link>
 
@@ -127,6 +139,7 @@ function Order(props) {
                     </form>
                 </div>
             </div>
+        </>
   );
 }
 

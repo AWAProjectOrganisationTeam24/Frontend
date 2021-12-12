@@ -5,13 +5,11 @@ import axios from "axios";
 import React, {useContext, useEffect} from "react";
 import Constants from "../Constants.json";
 import {UserAuthContext} from "../Contexts";
-import Header from "../Header";
+import Header from "../partials/Header";
 
 
 function App() {
-
-    let navigate = useNavigate();
-
+    
     //to this const customer id you want to search
     const [state, setState] = React.useState([]);
     const params = useParams();
@@ -34,7 +32,7 @@ function App() {
                 }
             })
             .catch(err => console.log('error'));
-    }, [params.id_restaurant]);
+    }, [params.id_restaurant, UserAuthContextValue]);
 
 
     return (
