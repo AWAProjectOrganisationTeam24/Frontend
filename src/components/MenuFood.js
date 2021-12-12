@@ -15,8 +15,8 @@ function ProductCard(props) {
           <address className="card-text">$ {product.price} euro</address>
           <small className="">
             <span className="badge badge-success">available</span>
-            <button onClick={() => onAdd(product)} className="btn btn-warning">
-              + Add to cart
+            <button onClick={() => onAdd(product)} className=" text-white btn btn-warning">
+               Add to cart <i class="fas fa-cart-plus"></i>
             </button>
           </small>
         </div>

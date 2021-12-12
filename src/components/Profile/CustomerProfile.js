@@ -32,13 +32,20 @@ export default function App() {
 
   return (
     <div className={styles.Profiletext}>
+
         <Header />
-        <h3>Profile Info</h3>
-        <div> 
+        
+        <div className="container">
+          <div className="row mt-4">
+            <div className="col-md-6">
+            <div className="card text-white bg-dark">
+            <h3>Profile Info</h3>
+            <div >
+            
         Name:
-            <br/>
+          
             {state.firstname}
-            <br/>
+           
             {state.lastname}
 
           </div>
@@ -46,16 +53,24 @@ export default function App() {
           <div>Money: {state.money}</div>
           <div>Address: {state.address}</div>
           <div>City: {state.city}</div>
-      <hr/>
+     
 
-      <Link to={`/restaurantMaker/${id_customer.id}/${state.id_manager}`}><h3>New Restaurant</h3></Link>
+      <Link to={`/restaurantMaker/${id_customer.id}/${state.id_manager}`}><h3>New Restaurant <i class="far fa-plus-square"></i></h3></Link>
         <div>
-        <Link to={`/profile/restaurant/${id_customer.id}/${state.id_manager}`}><h3>Your Restaurants</h3></Link>
+        <Link to={`/profile/restaurant/${id_customer.id}/${state.id_manager}`}><h3> <i class="fas fa-utensils"></i> Your Restaurants</h3></Link>
           </div>
 
       <h3>
-      <Link to={`/profile/orders/${state.id_customer}`}>Your Orders</Link>
+      <Link to={`/profile/orders/${state.id_customer}`}>Your Orders <i class="fas fa-sort-amount-up-alt"></i></Link>
       </h3>
+      </div>
+
+
+
+            </div>
+          </div>
+        </div>
+     
     </div>
   );
 }

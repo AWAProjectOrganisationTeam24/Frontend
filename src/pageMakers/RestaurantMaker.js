@@ -64,7 +64,136 @@ function RestaurantMaker() {
 
     return(
         <div>
-            <div className={ styles.RestaurantScreen }>
+
+<>
+
+<div className="container">
+    <div className="row mt-2">
+        <div className="col-md-2">
+
+        </div>
+        <div className="col-md-8">
+            <div className="card">
+            <div className="card-body">
+                <h3 className="text-center">Add a Restaurant</h3>
+            <form onSubmit={submitHandler}>
+            <div className="form-group">
+                <label>Restaurant name</label>
+                <input className="form-control" type="text" id="name" name="name" onChange={changeHandler}/>
+            </div>
+            <div className="form-group">
+                <label>Address</label>
+                <input className="form-control" type="text" id="address" name="address" onChange={changeHandler}/>
+            </div>
+            <div className="form-group">
+                <label>City</label>
+                <input className="form-control" type="text" id="city" name="city" onChange={changeHandler}/>
+            </div>
+            <div className="form-group">
+                <label>Operating hours</label>
+                <input className="form-control" type="text" id="openHr" name="openHr" onChange={changeHandler}/>
+            </div>
+            <div className="form-group">
+                <label>Image</label>
+                <input type="file" class="form-control-file" name="image" onChange={changeFileHandler} id="exampleFormControlFile1"/>
+            </div>
+
+            <label>Restaurant type</label>
+            <div class="form-check">
+                                        
+            <input class="form-check-input" type="radio"  value="Buffet" id="Choice1"  onChange={changeHandler}/>
+                    <label class="form-check-label" for="exampleRadios1">
+                    Buffet
+                    </label>
+                    
+            </div>
+            <div class="form-check">
+                                        
+            <input class="form-check-input" type="radio" name="type" value="Fast food"     id="Choice2"  onChange={changeHandler}/>
+                    <label class="form-check-label" for="exampleRadios1">
+                    Fast food
+                    </label>
+                    
+            </div>
+            <div class="form-check">
+                                        
+            <input  class="form-check-input" type="radio" name="type" value="Fast casual"   id="Choice3"  onChange={changeHandler}/>
+                    <label class="form-check-label" for="exampleRadios1">
+                    Fast casual
+                    </label>
+                    
+            </div>
+            <div class="form-check">
+                                        
+            <input  class="form-check-input" type="radio" name="type" value="Casual dining" id="Choice4" onChange={changeHandler}/>
+                    <label class="form-check-label" for="exampleRadios1">
+                    Casual dining
+                    </label>
+                    
+            </div>
+            <div class="form-check">
+                                        
+            <input  class="form-check-input" type="radio" name="type" value="Fine dining"   id="Choice5"  onChange={changeHandler}/>
+                    <label class="form-check-label" for="exampleRadios1">
+                    Fine dining
+                    </label>
+                    
+            </div>
+            <label>Price level</label>
+            <div class="form-check">
+                                        
+            <input class="form-check-input" type="radio" name="priceLevel"  value="€"    id="Mony1" onChange={changeHandler}/>
+                    <label class="form-check-label" for="exampleRadios1">
+                    €
+                    </label>
+                    
+            </div>
+            <div class="form-check">
+                                        
+            <input class="form-check-input" type="radio" name="priceLevel"  value="€€"   id="Mony2" onChange={changeHandler}/>
+                    <label class="form-check-label" for="exampleRadios1">
+                    €€
+                    </label>
+                    
+            </div>
+            <div class="form-check">
+                                        
+            <input class="form-check-input" type="radio" name="priceLevel"  value="€€€"  id="Mony3" onChange={changeHandler}/>
+                    <label class="form-check-label" for="exampleRadios1">
+                    €€€
+                    </label>
+                    
+            </div>
+            <div class="form-check">
+                                        
+            <input class="form-check-input" type="radio" name="priceLevel" value="€€€€" id="Mony4" onChange={changeHandler}/>
+                    <label class="form-check-label" for="exampleRadios1">
+                    €€€€
+                    </label>
+                    
+            </div>
+
+
+            
+            <button className="btn btn-outline-success" type="submit">Create restaurant</button>
+        </form>
+        </div>
+            </div>
+            
+        </div>
+        <div className="col-md-2">
+            
+        </div>
+    </div>
+</div>
+
+        
+
+       
+      
+       
+</>
+            {/* <div className={ styles.RestaurantScreen }>
                 <form  onSubmit={submitHandler}>
                     <div>Restaurant name<input type="text" name="name" onChange={changeHandler}/></div>
                     <div>Address<input type="text" name="address" onChange={changeHandler}/></div>
@@ -85,8 +214,10 @@ function RestaurantMaker() {
                     <div><input type="radio" name="priceLevel" value="€€€€" id="Mony4" onChange={changeHandler}/>€€€€</div>
                     <button type="submit">Create restaurant</button>
                 </form>
-            </div>
+            </div> */}
         </div>
+
+        
 
     );
 }
