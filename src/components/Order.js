@@ -72,7 +72,7 @@ function Order(props) {
 
 
     return(
-          <div>
+          <div className="container">
               <h3>Order: </h3>
                   {cartItems.map((e) =>
                       <div key={e.id}>

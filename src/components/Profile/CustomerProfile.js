@@ -40,7 +40,7 @@ export default function App() {
             <div className="col-md-6">
             <div className="card text-white bg-dark">
             <h3>Profile Info</h3>
-            <div >
+            <div>
             
         Name:
           

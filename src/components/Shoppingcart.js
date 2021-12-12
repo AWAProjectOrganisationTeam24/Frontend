@@ -13,7 +13,7 @@ import styles from "./Shoppingcart.module.css";
           <div className="container">
             <div className="row mt-4">
                 <div className="col-md-5">
-                  <div className="card cart">
+                  <div className="card card-body cart">
           {cartItems.length === 0 && <div className={styles.header}>Cart is empty</div>}
           <div>
             <div className={styles.item}>
@@ -26,11 +26,11 @@ import styles from "./Shoppingcart.module.css";
                 {item.qty} x ${item.price.toFixed(2)}
                   </div>
                 <button className= {styles.itemButton} onClick={() => onRemove(item)}>
-                -
+                <i class="fas fa-cart-arrow-down"></i>
                 </button>
                 <button
                   className= {styles.itemButton} onClick={() => onAdd(item)}>
-                      +
+                      <i class="fas fa-cart-plus"></i>
                 </button>
                 </div>
               </div>
@@ -53,7 +53,7 @@ import styles from "./Shoppingcart.module.css";
                   }}
 
                         state={{ cartItems, itemsPrice}}>
-                           <button>Proceed</button>
+                           <button className="btn btn-outline-success">Proceed ==></button>
                          </Link>
                 </div>
               </div>

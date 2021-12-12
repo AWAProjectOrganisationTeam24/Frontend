@@ -46,7 +46,7 @@ export default function Login(props) {
             break;
 
         case "success":
-            loginUIControls = <span style={{color: 'green'}}>Login successful</span>
+            loginUIControls = <span  className="alert alert-sucess" style={{color: 'green'}}>Login successful</span>
             break;
 
         case "error":
@@ -54,12 +54,13 @@ export default function Login(props) {
             break;
 
         default:
-            loginUIControls = <button type="submit">Login</button>
+            loginUIControls = <button className="btn btn-outline-success" type="submit">Login</button>
     }
         return (
             <div className ={ styles.container }>
                 <form onSubmit={submitHandler}>
                     <div>
+                   
                         <div>
                             <div>Mail</div>
                             <input type="text"
@@ -78,7 +79,8 @@ export default function Login(props) {
                     <div>
                         { loginUIControls }
                     </div>
-                    <Link to = 'createUser'><button>Sign up</button></Link>
+                 
+                    <Link to = 'createUser'><button className="btn btn-outline-success">Sign up</button></Link>
                 </form>
             </div>
         )

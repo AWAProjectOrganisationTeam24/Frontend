@@ -88,7 +88,7 @@ function CreateUser() {
                                        onChange={changeHandler}/>
                             </tr>
                         </table>
-                        <button type="submit">Create user</button>
+                        <button className="btn btn-outline-success" type="submit">Create user</button>
                     </form>
                 </div>
             </div>
