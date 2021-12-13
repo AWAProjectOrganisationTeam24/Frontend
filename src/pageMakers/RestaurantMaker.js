@@ -50,7 +50,7 @@ function RestaurantMaker() {
         }
             try {
             //sending to database
-                const res = await axios.post(`http://localhost:5000/add-restaurant/${params.id}`, formData);
+                const res = await axios.post(`http://limitless-escarpment-21335.herokuapp.com/add-restaurant/${params.id}`, formData);
                 console.log(res);
                 console.log('restaurant registered!');
                 navigate(`/profile/${params.id_customer}`, {replace: true});

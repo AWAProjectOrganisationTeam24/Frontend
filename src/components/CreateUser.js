@@ -24,7 +24,7 @@ function CreateUser() {
 
         //send it to backend + ensure if goes bad
         //get response from backend - after login show homepage
-        axios.post("http://localhost:5000/register", {
+        axios.post("http://limitless-escarpment-21335.herokuapp.com/register", {
             firstname: state.firstname,
             lastname: state.lastname,
             mail: state.mail,
