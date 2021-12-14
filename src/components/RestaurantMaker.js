@@ -59,7 +59,7 @@ class RestaurantMaker extends React.Component{
             })
 
 //sending to database
-        axios.post("http://localhost:5000/", {
+        axios.post("https://limitless-escarpment-21335.herokuapp.com", {
             id_owner: this.state.id_owner,
             category: this.state.category,
             name: this.state.name,

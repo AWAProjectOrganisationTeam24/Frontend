@@ -34,7 +34,7 @@ class CreateUser extends Component {
 
         //send it to backend + ensure if goes bad
         //get response from backend - after login show homepage
-        axios.post("http://localhost:5000/", {
+        axios.post("https://limitless-escarpment-21335.herokuapp.com", {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
             mail: this.state.mail,

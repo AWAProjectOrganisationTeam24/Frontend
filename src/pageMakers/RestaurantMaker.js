@@ -60,7 +60,7 @@ import axios from "axios";
             })
 
 //sending to database
-        axios.post("http://localhost:5000/", {
+        axios.post("https://limitless-escarpment-21335.herokuapp.com/", {
             id_owner: this.state.id_owner,
             category: this.state.category,
             name: this.state.name,
@@ -153,7 +153,7 @@ class RestaurantMaker extends React.Component{
 
         //send it to backend + ensure if goes bad
         //get response from backend - after login show homepage
-        axios.post("http://localhost:5000/", {
+        axios.post("https://limitless-escarpment-21335.herokuapp.com", {
             message: this.state.message,
             id_owner: this.state.id_owner,
             name: this.state.name,
@@ -211,7 +211,7 @@ class RestaurantMaker extends React.Component{
             })
 
 //sending to database
-        axios.post("http://localhost:5000/", {
+        axios.post("https://limitless-escarpment-21335.herokuapp.com", {
             id_owner: this.state.id_owner,
             category: this.state.category,
             name: this.state.name,

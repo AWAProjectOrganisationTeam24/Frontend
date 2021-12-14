@@ -79,7 +79,7 @@ export default class ProductMaker extends Component {
 
         //send it to backend + ensure if goes bad
         //get response from backend - if login & psw is OK -> show homepage
-        axios.post("http://localhost:5000/", {
+        axios.post("https://limitless-escarpment-21335.herokuapp.com", {
             id_restaurant: this.state.id_restaurant,
             category: this.state.category,
             name: this.state.name,
