@@ -5,7 +5,7 @@ export const data = {
    
     {
         id: '1',
-        foodName:"Creamy Salmon dish ",
+        foodName:"Creamy Sal ",
         foodprize:17.90 ,
       
         
