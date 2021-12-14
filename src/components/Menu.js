@@ -22,7 +22,7 @@ function Home() {
 
 
   useEffect(() => {
-    axios.get(`http://limitless-escarpment-21335.herokuapp.com/products/restaurant/${params.id_restaurant}`)
+    axios.get(`https://limitless-escarpment-21335.herokuapp.com/products/restaurant/${params.id_restaurant}`)
         .then(res => {
           const data = res.data;
           setProducts(data);
