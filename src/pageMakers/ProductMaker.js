@@ -45,7 +45,7 @@ function ProductMaker() {
 
         try {
             //sending to database
-            const res = await axios.post(`http://localhost:5000/products/add-product/${params.id_restaurant}`, formData);
+            const res = await axios.post(`http://limitless-escarpment-21335.herokuapp.com/products/add-product/${params.id_restaurant}`, formData);
             console.log(res);
             console.log('product added to menu!');
             navigate(`/profile/${params.id_customer}`, {replace: true});
