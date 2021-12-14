@@ -24,7 +24,7 @@ function Home(props) {
 
     // call the data from api
     const getRestaurants = () => {
-        axios.get(`https://limitless-escarpment-21335.herokuapp.com/`)
+        axios.get(`http://localhost:5000/`)
             .then(res => {
                 const data = res.data;
                 setItems(data);
