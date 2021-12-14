@@ -14,7 +14,7 @@ function App() {
     const UserAuthContextValue = useContext(UserAuthContext);
 
   useEffect(() => {
-      axios.get(`http://localhost:5000/view-restaurant/${params.id_manager}`, {
+      axios.get(`https://limitless-escarpment-21335.herokuapp.com//view-restaurant/${params.id_manager}`, {
           headers: {
               'Content-Type': 'application/json',
               'Authorization': 'Bearer ' + UserAuthContextValue.jwt
@@ -34,7 +34,7 @@ function App() {
         <Header id={params.id} />
             {state.map((item) => (
                         <div key = {item.id_restaurant}>
-                            <img src={`http://localhost:5000/images/products/${item.image}`} className={styles.img}  alt="cart-img" /><br/>
+                            <img src={`https://limitless-escarpment-21335.herokuapp.com//images/products/${item.image}`} className={styles.img}  alt="cart-img" /><br/>
                             Restaraunt Name: <h4>{item.name}</h4>
                             <br/>
                             <div>Address: {item.address}</div><br/>
